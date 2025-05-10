@@ -64,11 +64,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="250dp"
-                android:text="Entrar"
-                android:textStyle="bold"
-                android:textColor="#FFFFFF"
                 android:backgroundTint="#000000"
-                android:elevation="4dp" />
+                android:elevation="4dp"
+                android:text="Entrar"
+                android:textColor="#FFFFFF"
+                android:textStyle="bold" />
         </LinearLayout>
     </LinearLayout>
 
