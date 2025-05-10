@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">CataraVinhos</string>
+    <string name="headerLogin">CataraVino</string>
+    <string name="menu_description">Botão de menu</string>
+    <string name="logo_description">Logo do aplicativo</string>
+    <string name="search_hint">Buscar vinho</string>
+    <string name="cart_description">Botão do carrinho</string>
+    <string name="wines_menu_item">Vinhos</string>
+    <string name="genres_menu_item">Gêneros</string>
+    <string name="contact_menu_item">Contato para o vendedor</string>
+    <string name="learn_more_button">Saiba mais →</string>
+</resources>

@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F4E1D2">
+
+    <!-- Header -->
+    <LinearLayout
+        android:id="@+id/header"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:orientation="horizontal"
+        android:padding="12dp"
+        android:gravity="center_vertical"
+        android:background="#F4E1D2">
+
+        <!-- Menu Button -->
+        <ImageButton
+            android:id="@+id/menuButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:contentDescription="@string/menu_description" />
+
+        <!-- Logo -->
+        <ImageView
+            android:id="@+id/logo"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="16dp"
+            android:contentDescription="@string/logo_description" />
+
+        <!-- Search EditText -->
+        <EditText
+            android:id="@+id/searchEditText"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginStart="16dp"
+            android:hint="@string/search_hint"
+            android:padding="8dp"
+            android:background="@drawable/edit_text_background"
+            android:drawablePadding="8dp" />
+
+        <!-- carrinho btn -->
+        <ImageButton
+            android:id="@+id/cartButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:contentDescription="@string/cart_description" />
+    </LinearLayout>
+
+    <!-- Accordion menu  -->
+    <LinearLayout
+        android:id="@+id/accordionMenu"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="#ffffff"
+        android:visibility="gone"
+        android:elevation="6dp"
+        android:padding="16dp"
+        android:layout_below="@id/header">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/wines_menu_item"
+            android:textSize="18sp"
+            android:paddingVertical="8dp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/genres_menu_item"
+            android:textSize="18sp"
+            android:paddingVertical="8dp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/contact_menu_item"
+            android:textSize="18sp"
+            android:paddingVertical="8dp" />
+    </LinearLayout>
+
+    <!-- Background Image -->
+    <ImageView
+        android:id="@+id/backgroundImage"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/header"
+        android:scaleType="centerCrop"
+        android:alpha="0.9" />
+
+    <!-- Saiba mais btn -->
+    <Button
+        android:id="@+id/saibaMaisButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/learn_more_button"
+        android:backgroundTint="#000000"
+        android:textColor="#FFFFFF"
+        android:layout_centerInParent="true"
+        android:paddingHorizontal="24dp"
+        android:paddingVertical="12dp"
+        android:elevation="4dp"
+        android:background="@drawable/rounded_button" />
+
+</RelativeLayout>
+
+    <!-- colocar depois    NÃO ESQUECER: -->
+    <!-- @drawable/ic_menu -->
+    <!-- @drawable/ic_wine_logo -->
+    <!-- @drawable/ic_search -->
+    <!-- @drawable/ic_cart -->
+    <!-- @drawable/background_placeholder -->
