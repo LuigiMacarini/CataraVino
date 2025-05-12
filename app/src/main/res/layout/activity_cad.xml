@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:padding="20dp"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <EditText android:id="@+id/edtNome" android:hint="Nome" android:layout_width="match_parent" android:layout_height="wrap_content" />
+        <EditText android:id="@+id/edtCpfCnpj" android:hint="CPF ou CNPJ" android:layout_width="match_parent" android:layout_height="wrap_content" />
+        <EditText android:id="@+id/edtEndereco" android:hint="Endereço" android:layout_width="match_parent" android:layout_height="wrap_content" />
+        <EditText android:id="@+id/edtResponsavel" android:hint="Responsável" android:layout_width="match_parent" android:layout_height="wrap_content" />
+        <EditText android:id="@+id/edtContato" android:hint="Contato" android:layout_width="match_parent" android:layout_height="wrap_content" />
+        <EditText android:id="@+id/edtEmail" android:hint="Email" android:layout_width="match_parent" android:layout_height="wrap_content" />
+        <EditText android:id="@+id/edtSenha" android:hint="Senha" android:inputType="textPassword" android:layout_width="match_parent" android:layout_height="wrap_content" />
+
+        <Button android:id="@+id/btnCadastrar" android:text="Cadastrar" android:layout_width="match_parent" android:layout_height="wrap_content" />
+    </LinearLayout>
+</ScrollView>

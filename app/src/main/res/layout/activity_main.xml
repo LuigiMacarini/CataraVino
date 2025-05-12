@@ -18,8 +18,7 @@
         <ImageView
             android:id="@+id/menuIcon"
             android:layout_width= "24dp"
-            android:layout_height="24dp"
-            android:src="@drawable/" <!-- o ícone do menu aq -->/>
+            android:layout_height="24dp"/> <!-- o ícone do menu aq -->
 
         <View
             android:layout_width="0dp"
@@ -41,14 +40,14 @@
             android:id="@+id/searchIcon"
             android:layout_width="24dp"
             android:layout_height="24dp"
-            android:src="@drawable/" <!-- icone da lupa -->
-        android:layout_marginEnd="16dp" />
+            android:layout_marginEnd="16dp" />
+        <!-- icone da lupa -->
 
         <ImageView
             android:id="@+id/cartIcon"
             android:layout_width="24dp"
-            android:layout_height="24dp"
-            android:src="@drawable/" <!-- o ícone do carrinho -->/>
+            android:layout_height="24dp" />
+        <!-- o ícone do carrinho -->
 
     </LinearLayout>
 
