@@ -9,50 +9,60 @@
         android:id="@+id/header"
         android:layout_width="match_parent"
         android:layout_height="56dp"
-        android:orientation="horizontal"
-        android:padding="12dp"
+        android:background="#F4E1D2"
         android:gravity="center_vertical"
-        android:background="#F4E1D2">
+        android:orientation="horizontal"
+        android:padding="12dp">
 
         <!-- Menu Button -->
-        <ImageButton
+        <Button
             android:id="@+id/menuButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="100dp"
+            android:layout_height="50dp"
+            android:textColor="@color/black"
+            android:text="Menu"
+            android:gravity="center"
             android:background="?attr/selectableItemBackgroundBorderless"
             android:contentDescription="@string/menu_description" />
-
-        <!-- Logo -->
-        <ImageView
-            android:id="@+id/logo"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_marginStart="16dp"
-            android:contentDescription="@string/logo_description" />
 
         <!-- Search EditText -->
         <EditText
             android:id="@+id/searchEditText"
             android:layout_width="0dp"
+            android:textColor="@color/black"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
             android:layout_marginStart="16dp"
-            android:hint="@string/search_hint"
-            android:padding="8dp"
+            android:gravity="center"
+            android:layout_weight="1"
             android:background="@drawable/edit_text_background"
-            android:drawablePadding="8dp" />
+            android:drawablePadding="8dp"
+            android:hint="@string/search_hint"
+            android:padding="2dp" />
 
-        <!-- carrinho btn -->
+        <!-- Carrinho -->
         <ImageButton
             android:id="@+id/cartButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
             android:layout_marginStart="8dp"
             android:background="?attr/selectableItemBackgroundBorderless"
-            android:contentDescription="@string/cart_description" />
+            android:src="@drawable/cart_shopping_solid"
+            android:contentDescription="@string/cart_description"
+            android:scaleType="fitCenter" />
+
     </LinearLayout>
 
-    <!-- Accordion menu  -->
+    <!-- Background Image -->
+    <ImageView
+        android:id="@+id/backgroundImage"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:src="@drawable/banner"
+        android:layout_below="@id/header"
+        android:scaleType="centerCrop"
+        android:alpha="0.9" />
+
+    <!-- Accordion Menu -->
     <LinearLayout
         android:id="@+id/accordionMenu"
         android:layout_width="match_parent"
@@ -65,55 +75,45 @@
         android:layout_below="@id/header">
 
         <TextView
+            android:id="@+id/winesMenuItem"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/wines_menu_item"
+            android:textColor="@color/black"
             android:textSize="18sp"
             android:paddingVertical="8dp" />
 
         <TextView
+            android:id="@+id/genresMenuItem"
             android:layout_width="match_parent"
+            android:textColor="@color/black"
             android:layout_height="wrap_content"
             android:text="@string/genres_menu_item"
             android:textSize="18sp"
             android:paddingVertical="8dp" />
 
         <TextView
+            android:id="@+id/contactMenuItem"
             android:layout_width="match_parent"
+            android:textColor="@color/black"
             android:layout_height="wrap_content"
             android:text="@string/contact_menu_item"
             android:textSize="18sp"
             android:paddingVertical="8dp" />
     </LinearLayout>
 
-    <!-- Background Image -->
-    <ImageView
-        android:id="@+id/backgroundImage"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@id/header"
-        android:scaleType="centerCrop"
-        android:alpha="0.9" />
-
-    <!-- Saiba mais btn -->
+    <!-- Saiba Mais Button -->
     <Button
         android:id="@+id/saibaMaisButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/learn_more_button"
-        android:backgroundTint="#000000"
-        android:textColor="#FFFFFF"
+        android:textColor="@color/white"
         android:layout_centerInParent="true"
         android:paddingHorizontal="24dp"
         android:paddingVertical="12dp"
         android:elevation="4dp"
-        android:background="@drawable/rounded_button" />
+        android:backgroundTint="#000000"
+        />
 
 </RelativeLayout>
-
-    <!-- colocar depois    NÃO ESQUECER: -->
-    <!-- @drawable/ic_menu -->
-    <!-- @drawable/ic_wine_logo -->
-    <!-- @drawable/ic_search -->
-    <!-- @drawable/ic_cart -->
-    <!-- @drawable/background_placeholder -->
