@@ -15,15 +15,15 @@
 
 
         <activity
-            android:name=".Home"
+            android:name=".Login"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-
+        <activity android:name=".Home"/>
+        <activity android:name=".Historia"/>
         <activity android:name=".CartActivity" />
         <activity android:name=".WinesActivity" />
         <activity android:name=".GenresActivity" />

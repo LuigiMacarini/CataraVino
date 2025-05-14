@@ -1,9 +1,17 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
+
     <!-- Base application theme. -->
     <style name="Base.Theme.CataraVinhos" parent="Theme.Material3.DayNight.NoActionBar">
-        <!-- Customize your light theme here. -->
+        <!-- Personalize sua theme aqui -->
+        <!-- Cor primária personalizada (opcional) -->
         <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+
+        <!-- Garante que a status bar seja clara com ícones escuros -->
+        <item name="android:statusBarColor">@color/background</item>
+        <item name="android:windowLightStatusBar">true</item>
+
     </style>
 
     <style name="Theme.CataraVinhos" parent="Base.Theme.CataraVinhos" />
+
 </resources>

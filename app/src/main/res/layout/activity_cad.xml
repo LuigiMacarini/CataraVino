@@ -17,6 +17,26 @@
         <EditText android:id="@+id/edtEmail" android:hint="Email" android:layout_width="match_parent" android:layout_height="wrap_content" />
         <EditText android:id="@+id/edtSenha" android:hint="Senha" android:inputType="textPassword" android:layout_width="match_parent" android:layout_height="wrap_content" />
 
-        <Button android:id="@+id/btnCadastrar" android:text="Cadastrar" android:layout_width="match_parent" android:layout_height="wrap_content" />
+        <Button android:id="@+id/btnCadastrar" android:text="Cadastrar" android:layout_width="match_parent" android:layout_height="wrap_content"/>
+
+        <!-- Resultado será mostrado aqui -->
+        <TextView
+            android:id="@+id/txtResultado"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="20dp"
+            android:textSize="16sp"
+            android:textColor="#000000"
+            android:text="Resultado aparecerá aqui..." />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/btnListarCadastros"
+            android:text="Listar Todos os Cadastros"/>
+
+
+
+
     </LinearLayout>
 </ScrollView>

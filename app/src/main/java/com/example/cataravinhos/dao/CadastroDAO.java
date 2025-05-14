@@ -64,4 +64,31 @@ public class CadastroDAO {
         return model;
     }
 
+    public void logAllData() {
+        SQLiteDatabase db = le;
+        Cursor cursor = db.query(
+                CadastroModel.TABELA_CADASTRO,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null
+        );
+
+        if (cursor.moveToFirst()) {
+            do {
+                StringBuilder sb = new StringBuilder();
+                sb.append("ID: ").append(cursor.getInt(cursor.getColumnIndexOrThrow(CadastroModel.COLUNA_ID)));
+                sb.append(", Nome: ").append(cursor.getString(cursor.getColumnIndexOrThrow(CadastroModel.COLUNA_NOME)));
+                sb.append(", Email: ").append(cursor.getString(cursor.getColumnIndexOrThrow(CadastroModel.COLUNA_EMAIL)));
+                // Adicione mais campos conforme necessário
+
+                android.util.Log.d("CadastroDAO", sb.toString());
+            } while (cursor.moveToNext());
+        }
+
+        cursor.close();
+    }
+
 }

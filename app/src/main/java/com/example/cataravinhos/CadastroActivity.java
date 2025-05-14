@@ -1,10 +1,13 @@
 package com.example.cataravinhos;
 
+import android.annotation.SuppressLint;
 import android.content.ContentValues;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -17,6 +20,8 @@ public class CadastroActivity extends AppCompatActivity {
 
     EditText edtNome, edtCpfCnpj, edtEndereco, edtResponsavel, edtContato, edtEmail, edtSenha;
     Button btnCadastrar;
+
+    TextView txtResultado;
     DBOpenHelper dbHelper;
 
     @Override
@@ -32,6 +37,11 @@ public class CadastroActivity extends AppCompatActivity {
         edtEmail = findViewById(R.id.edtEmail);
         edtSenha = findViewById(R.id.edtSenha);
         btnCadastrar = findViewById(R.id.btnCadastrar);
+        txtResultado = findViewById(R.id.txtResultado);
+
+        Button btnListar = findViewById(R.id.btnListarCadastros);
+        btnListar.setOnClickListener(v -> listarCadastros());
+
 
         dbHelper = new DBOpenHelper(this);
         SQLiteDatabase db = dbHelper.getWritableDatabase();
@@ -40,6 +50,51 @@ public class CadastroActivity extends AppCompatActivity {
         btnCadastrar.setOnClickListener(v -> cadastrar());
     }
 
+    @SuppressLint("SetTextI18n")
+    private void listarCadastros() {
+        SQLiteDatabase db = dbHelper.getReadableDatabase();
+        StringBuilder resultado = new StringBuilder();
+
+        Cursor cursor = db.query(
+                CadastroModel.TABELA_CADASTRO,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null
+        );
+
+        if (cursor.moveToFirst()) {
+            do {
+                int id = cursor.getInt(cursor.getColumnIndexOrThrow(CadastroModel.COLUNA_ID));
+                String nome = cursor.getString(cursor.getColumnIndexOrThrow(CadastroModel.COLUNA_NOME));
+                String cpfCnpj = cursor.getString(cursor.getColumnIndexOrThrow(CadastroModel.COLUNA_CPF_CNPJ));
+                String endereco = cursor.getString(cursor.getColumnIndexOrThrow(CadastroModel.COLUNA_ENDERECO));
+                String responsavel = cursor.getString(cursor.getColumnIndexOrThrow(CadastroModel.COLUNA_RESPONSAVEL));
+                String contato = cursor.getString(cursor.getColumnIndexOrThrow(CadastroModel.COLUNA_CONTATO));
+                String email = cursor.getString(cursor.getColumnIndexOrThrow(CadastroModel.COLUNA_EMAIL));
+
+                resultado.append("ID: ").append(id).append("\n")
+                        .append("Nome: ").append(nome).append("\n")
+                        .append("CPF/CNPJ: ").append(cpfCnpj).append("\n")
+                        .append("Endereço: ").append(endereco).append("\n")
+                        .append("Responsável: ").append(responsavel).append("\n")
+                        .append("Contato: ").append(contato).append("\n")
+                        .append("Email: ").append(email).append("\n\n");
+            } while (cursor.moveToNext());
+        } else {
+            resultado.append("Nenhum cadastro encontrado.");
+        }
+
+        cursor.close();
+        db.close();
+
+        txtResultado.setText(resultado.toString());
+    }
+
+
+    @SuppressLint("SetTextI18n")
     private void cadastrar() {
         String nome = edtNome.getText().toString();
         String cpfCnpj = edtCpfCnpj.getText().toString();
@@ -62,11 +117,20 @@ public class CadastroActivity extends AppCompatActivity {
         long result = db.insert(CadastroModel.TABELA_CADASTRO, null, values);
 
         if (result != -1) {
+            txtResultado.setText(
+                    "Cadastro realized com sucesso!\n" +
+                            "Nome: " + nome + "\n" +
+                            "CPF/CNPJ: " + cpfCnpj + "\n" +
+                            "Endereço: " + endereco + "\n" +
+                            "Responsável: " + responsavel + "\n" +
+                            "Contato: " + contato + "\n" +
+                            "Email: " + email
+            );
             Toast.makeText(this, "Cadastro realizado com sucesso!", Toast.LENGTH_SHORT).show();
-        } else {
-            Toast.makeText(this, "Erro ao cadastrar", Toast.LENGTH_SHORT).show();
-        }
 
-        db.close();
+            db.close();
+            listarCadastros();
+
+        }
     }
 }

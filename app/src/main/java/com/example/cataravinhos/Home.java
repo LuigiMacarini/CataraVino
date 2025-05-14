@@ -36,6 +36,13 @@ public class Home extends AppCompatActivity {
             }
         });
 
+        Button saibaMaisButton = findViewById(R.id.saibaMaisButton);
+        saibaMaisButton.setOnClickListener(v -> {
+            Intent intent = new Intent(Home.this, Historia.class);
+            startActivity(intent);
+        });
+
+
         // Ação do carrinho
         cartButton.setOnClickListener(v -> {
             Intent intent = new Intent(Home.this, CartActivity.class);
@@ -59,5 +66,11 @@ public class Home extends AppCompatActivity {
             Intent intent = new Intent(Home.this, ContactActivity.class);
             startActivity(intent);
         });
+
+        saibaMaisButton.setOnClickListener(v -> {
+            Intent intent = new Intent(Home.this, Historia.class);
+            startActivity(intent);
+        });
+
     }
 }
