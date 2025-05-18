@@ -25,11 +25,15 @@ public class VinhoDAO {
 
         valores.put("nome", vinho.getNome());
         valores.put("preco", vinho.getPreco());
+        valores.put("descricao", vinho.getDescricao());
+        valores.put("ano", vinho.getAno());
+        valores.put("genero", vinho.getGenero()); // novo campo
 
         long resultado = db.insert(VinhoModel.TABELA_VINHO, null, valores);
         db.close();
         return resultado != -1;
     }
+
 
     public List<VinhoModel> listarVinhos() {
         List<VinhoModel> lista = new ArrayList<>();
@@ -41,9 +45,11 @@ public class VinhoDAO {
         if (cursor.moveToFirst()) {
             do {
                 VinhoModel vinho = new VinhoModel();
-                vinho.setId(cursor.getInt(cursor.getColumnIndexOrThrow("id")));
                 vinho.setNome(cursor.getString(cursor.getColumnIndexOrThrow("nome")));
                 vinho.setPreco(cursor.getDouble(cursor.getColumnIndexOrThrow("preco")));
+                vinho.setDescricao(cursor.getString(cursor.getColumnIndexOrThrow("descricao")));
+                vinho.setAno(cursor.getInt(cursor.getColumnIndexOrThrow("ano")));
+                vinho.setGenero(cursor.getString(cursor.getColumnIndexOrThrow("genero")));
 
                 lista.add(vinho);
             } while (cursor.moveToNext());
@@ -53,4 +59,15 @@ public class VinhoDAO {
         db.close();
         return lista;
     }
+
+    public boolean apagarVinho(String nome) {
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+        int rowsDeleted = db.delete(VinhoModel.TABELA_VINHO, "nome = ?", new String[]{nome});
+        db.close();
+        return rowsDeleted > 0;
+    }
+
+
+
+
 }

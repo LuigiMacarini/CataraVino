@@ -21,11 +21,70 @@
         android:inputType="numberDecimal"
         android:layout_marginTop="16dp" />
 
+    <EditText
+        android:id="@+id/editDescricao"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Descrição"
+        android:inputType="textMultiLine"
+        android:layout_marginTop="16dp" />
+
+    <EditText
+        android:id="@+id/editAno"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Ano"
+        android:inputType="number"
+        android:layout_marginTop="16dp" />
+
+    <!-- Novo campo para gênero -->
+    <EditText
+        android:id="@+id/editGenero"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Gênero"
+        android:inputType="text"
+        android:layout_marginTop="16dp" />
+
     <Button
         android:id="@+id/btnSalvarVinho"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Salvar"
         android:layout_marginTop="24dp" />
+
+    <Button
+        android:id="@+id/btnListar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Listar vinhos (Logcat)"
+        android:layout_marginTop="16dp" />
+
+    <TextView
+        android:id="@+id/textListaVinhos"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Lista de vinhos aparecerá aqui"
+        android:textSize="16sp"
+        android:paddingTop="16dp"
+        android:textColor="#000000"
+        />
+
+    <!-- Se quiser apagar pelo nome (já que id não existe no modelo) -->
+    <EditText
+        android:id="@+id/editNomeParaApagar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Nome do vinho para apagar"
+        android:inputType="text"
+        android:layout_marginTop="24dp"/>
+
+    <Button
+        android:id="@+id/btnApagar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Apagar vinho"
+        android:layout_marginTop="8dp"/>
+
 
 </LinearLayout>

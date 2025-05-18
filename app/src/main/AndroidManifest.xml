@@ -15,7 +15,7 @@
 
 
         <activity
-            android:name=".Home"
+            android:name=".AddVinhoActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -30,6 +30,7 @@
         <activity android:name=".ContactActivity" />
         <activity android:name=".Info" />
         <activity android:name=".CartActivity" />
+        <activity android:name=".Home" />
 
     </application>
 

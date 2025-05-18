@@ -1,31 +1,54 @@
 package com.example.cataravinhos.model;
 
 public class VinhoModel {
-    public static final String TABELA_VINHO = "tb_vinhos";
 
-    public static final String CREATE_TABLE =
-            "CREATE TABLE " + TABELA_VINHO + " (" +
-                    "id INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                    "nome TEXT NOT NULL, " +
-                    "preco REAL NOT NULL)";
+    public static final String TABELA_VINHO = "vinho";
 
-    private int id;
+    // SQL para criar a tabela
+    public static final String CREATE_TABLE = "CREATE TABLE " + TABELA_VINHO + " ("
+            + "nome TEXT PRIMARY KEY,"
+            + "preco REAL,"
+            + "descricao TEXT,"
+            + "ano INTEGER,"
+            + "genero TEXT"
+            + ");";
+
     private String nome;
     private double preco;
+    private String descricao;
+    private int ano;
+    private String genero;
 
     public VinhoModel() {}
 
-    public VinhoModel(String nome, double preco) {
+    public String getNome() {
+        return nome;
+    }
+    public void setNome(String nome) {
         this.nome = nome;
+    }
+    public double getPreco() {
+        return preco;
+    }
+    public void setPreco(double preco) {
         this.preco = preco;
     }
-
-    public int getId() { return id; }
-    public void setId(int id) { this.id = id; }
-
-    public String getNome() { return nome; }
-    public void setNome(String nome) { this.nome = nome; }
-
-    public double getPreco() { return preco; }
-    public void setPreco(double preco) { this.preco = preco; }
+    public String getDescricao() {
+        return descricao;
+    }
+    public void setDescricao(String descricao) {
+        this.descricao = descricao;
+    }
+    public int getAno() {
+        return ano;
+    }
+    public void setAno(int ano) {
+        this.ano = ano;
+    }
+    public String getGenero() {
+        return genero;
+    }
+    public void setGenero(String genero) {
+        this.genero = genero;
+    }
 }
