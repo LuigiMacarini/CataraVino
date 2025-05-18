@@ -1,75 +1,59 @@
 package com.example.cataravinhos;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
+import com.google.android.material.navigation.NavigationView;
+
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
-
 
 public class Home extends AppCompatActivity {
+    private DrawerLayout drawerLayout;
+    private NavigationView navigationView;
+    private ImageButton menuButton,cartButton;
+    private Button saibaMaisButton;
+
     @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
-        // Botões e menus
-        Button menuButton = findViewById(R.id.menuButton);
-        LinearLayout accordionMenu = findViewById(R.id.accordionMenu);
-        ImageButton cartButton = findViewById(R.id.cartButton);
+        drawerLayout = findViewById(R.id.drawer_layout);
+        navigationView = findViewById(R.id.nav_view);
+        menuButton = findViewById(R.id.menuButton);
+        cartButton = findViewById(R.id.cartButton);
+        saibaMaisButton = findViewById(R.id.saibaMaisButton);
 
-        TextView winesMenuItem = findViewById(R.id.winesMenuItem);
-        TextView genresMenuItem = findViewById(R.id.genresMenuItem);
-        TextView contactMenuItem = findViewById(R.id.contactMenuItem);
-
-        // Toggle do menu
+        // Configure menu button click
         menuButton.setOnClickListener(v -> {
-            if (accordionMenu.getVisibility() == View.VISIBLE) {
-                accordionMenu.setVisibility(View.GONE);
-            } else {
-                accordionMenu.setVisibility(View.VISIBLE);
+            drawerLayout.openDrawer(navigationView);
+        });
+
+        // Configure navigation item selection (SINGLE LISTENER)
+        navigationView.setNavigationItemSelectedListener(item -> {
+            int id = item.getItemId();
+
+            if (id == R.id.nav_wines) {
+                startActivity(new Intent(this, WinesActivity.class));
             }
+            else if (id == R.id.nav_genres) {
+                startActivity(new Intent(this, GenresActivity.class));
+            }
+            else if (id == R.id.nav_contact) {
+                startActivity(new Intent(this, ContactActivity.class));
+            }
+
+            drawerLayout.closeDrawer(GravityCompat.START);
+            return true;
         });
-
-        Button saibaMaisButton = findViewById(R.id.saibaMaisButton);
-        saibaMaisButton.setOnClickListener(v -> {
-            Intent intent = new Intent(Home.this, Historia.class);
-            startActivity(intent);
-        });
-
-
-        // Ação do carrinho
         cartButton.setOnClickListener(v -> {
-            Intent intent = new Intent(Home.this, CartActivity.class);
-            startActivity(intent);
+            startActivity(new Intent(this, CartActivity.class));
         });
-
-        // Ação do menu Vinhos
-        winesMenuItem.setOnClickListener(v -> {
-            Intent intent = new Intent(Home.this, WinesActivity.class);
-            startActivity(intent);
-        });
-
-        // Ação do menu Gêneros
-        genresMenuItem.setOnClickListener(v -> {
-            Intent intent = new Intent(Home.this, GenresActivity.class);
-            startActivity(intent);
-        });
-
-        // Ação do menu Contato
-        contactMenuItem.setOnClickListener(v -> {
-            Intent intent = new Intent(Home.this, ContactActivity.class);
-            startActivity(intent);
-        });
-
         saibaMaisButton.setOnClickListener(v -> {
-            Intent intent = new Intent(Home.this, Historia.class);
-            startActivity(intent);
+            startActivity(new Intent(this, Info.class));
         });
 
     }

@@ -1,123 +1,111 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.drawerlayout.widget.DrawerLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/drawer_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F4E1D2"
-    android:id="@+id/main">
+    android:fitsSystemWindows="true">
 
-    <!-- Header -->
+    <!-- Conteúdo Principal -->
     <LinearLayout
-        android:id="@+id/header"
-        android:layout_width="match_parent"
-        android:layout_height="56dp"
-        android:background="#F4E1D2"
-        android:gravity="center_vertical"
-        android:orientation="horizontal"
-        android:padding="12dp">
-
-        <!-- Menu Button -->
-        <ImageButton
-            android:id="@+id/menuButton"
-            android:layout_width="25dp"
-            android:layout_height="30dp"
-            android:layout_alignParentStart="true"
-            android:layout_centerVertical="true"
-            android:background="?attr/selectableItemBackgroundBorderless"
-            android:contentDescription="@string/menu_description"
-            android:scaleType="fitCenter"
-            android:src="@drawable/menu" />
-
-        <!-- Search EditText -->
-        <EditText
-            android:id="@+id/searchEditText"
-            android:layout_width="0dp"
-            android:textColor="@color/black"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:gravity="left"
-
-            android:layout_weight="1"
-            android:background="@drawable/edit_text_background"
-            android:drawablePadding="8dp"
-            android:hint="@string/search_hint"
-            android:padding="2dp" />
-
-        <!-- Carrinho -->
-        <ImageButton
-            android:id="@+id/cartButton"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_marginStart="8dp"
-            android:background="?attr/selectableItemBackgroundBorderless"
-            android:src="@drawable/cart_shopping_solid"
-            android:contentDescription="@string/cart_description"
-            android:scaleType="fitCenter" />
-
-    </LinearLayout>
-
-    <!-- Background Image -->
-    <ImageView
-        android:id="@+id/backgroundImage"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:src="@drawable/banner"
-        android:layout_below="@id/header"
-        android:scaleType="centerCrop"
-        android:alpha="0.9" />
-
-
-    <!-- Accordion Menu -->
-    <LinearLayout
-        android:id="@+id/accordionMenu"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:background="#ffffff"
-        android:visibility="gone"
-        android:elevation="6dp"
-        android:padding="16dp"
-        android:layout_below="@id/header">
+        android:background="#EFE0D1">
 
-        <TextView
-            android:id="@+id/winesMenuItem"
+        <!-- Toolbar Personalizada -->
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/wines_menu_item"
-            android:textColor="@color/black"
-            android:textSize="18sp"
-            android:paddingVertical="8dp" />
+            android:layout_height="?attr/actionBarSize"
+            android:orientation="horizontal"
+            android:background="#EFE0D1"
+            android:elevation="4dp"
+            android:gravity="center_vertical"
+            android:paddingHorizontal="8dp">
 
-        <TextView
-            android:id="@+id/genresMenuItem"
-            android:layout_width="match_parent"
-            android:textColor="@color/black"
-            android:layout_height="wrap_content"
-            android:text="@string/genres_menu_item"
-            android:textSize="18sp"
-            android:paddingVertical="8dp" />
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center_vertical|start">
 
-        <TextView
-            android:id="@+id/contactMenuItem"
+                <ImageButton
+                    android:id="@+id/menuButton"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:src="@drawable/menu"
+                    android:background="?attr/selectableItemBackgroundBorderless"
+                    android:contentDescription="Menu" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="2"
+                android:gravity="center">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/headerLogin"
+                    android:textSize="20sp"
+                    android:textColor="#000000"
+                    android:fontFamily="@font/museo_bold" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center_vertical|end">
+
+                <ImageButton
+                    android:id="@+id/cartButton"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:src="@drawable/carrinho"
+                    android:background="?attr/selectableItemBackgroundBorderless"
+                    android:contentDescription="Carrinho" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <!-- Accordion Menu -->
+
+
+        <!-- Corpo da Tela -->
+        <LinearLayout
             android:layout_width="match_parent"
-            android:textColor="@color/black"
-            android:layout_height="wrap_content"
-            android:text="@string/contact_menu_item"
-            android:textSize="18sp"
-            android:paddingVertical="8dp" />
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:paddingTop="16dp">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="300dp"
+                android:src="@drawable/bottle_wine2"
+                android:contentDescription="Vinho" />
+
+            <Button
+                android:id="@+id/saibaMaisButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Saiba mais ->"
+                android:backgroundTint="#000"
+                android:textColor="#FFFFFF"
+                android:layout_marginTop="16dp" />
+        </LinearLayout>
     </LinearLayout>
 
-    <!-- Saiba Mais Button -->
-    <Button
-        android:id="@+id/saibaMaisButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/learn_more_button"
-        android:textColor="@color/white"
-        android:layout_centerInParent="true"
-        android:paddingHorizontal="24dp"
-        android:paddingVertical="12dp"
-        android:elevation="4dp"
-        android:backgroundTint="#000000"
-        />
-
-</RelativeLayout>
+    <!-- Menu Lateral  -->
+    <com.google.android.material.navigation.NavigationView
+        android:id="@+id/nav_view"
+        android:layout_width="150dp"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        android:background="#EFE0D1"
+        app:itemTextColor="@color/black"
+        app:menu="@menu/drawer_menu" />
+</androidx.drawerlayout.widget.DrawerLayout>
