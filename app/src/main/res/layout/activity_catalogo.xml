@@ -8,235 +8,253 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="72dp"
-        android:orientation="horizontal"
-        android:background="#EFE0D1"
-        android:gravity="center_vertical"
-        android:paddingStart="16dp"
-        android:paddingEnd="16dp">
-
-        <ImageView
-            android:id="@+id/menuIcon"
-            android:layout_width= "24dp"
-            android:layout_height="24dp"/> <!-- o ícone do menu aq -->
-
-        <View
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_weight="1"/>
-
-        <ImageView
-            android:id="@+id/logo"
-            android:layout_width="64dp"
-            android:layout_height="64dp"
-            android:src="@drawable/bottle_wine2"/>
-
-        <View
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_weight="1" />
-
-        <ImageView
-            android:id="@+id/searchIcon"
-            android:layout_width="24dp"
-            android:layout_height="24dp"
-            android:layout_marginEnd="16dp" />
-        <!-- icone da lupa -->
-
-        <ImageView
-            android:id="@+id/cartIcon"
-            android:layout_width="24dp"
-            android:layout_height="24dp" />
-        <!-- o ícone do carrinho -->
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:orientation="vertical"
-        android:padding="8dp">
+        android:background="#EFE0D1">
 
+        <!-- Toolbar Personalizada -->
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="?attr/actionBarSize"
             android:orientation="horizontal"
-            android:gravity="center"
-            android:layout_marginBottom="12dp">
+            android:background="#EFE0D1"
+            android:elevation="4dp"
+            android:gravity="center_vertical"
+            android:paddingHorizontal="8dp">
 
             <LinearLayout
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:orientation="vertical"
-                android:background="@android:color/white"
-                android:padding="8dp"
-                android:layout_marginStart="6dp"
-                android:elevation="4dp">
+                android:gravity="center_vertical|start">
 
-                <ImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="180dp"
-                    android:src="@drawable/vinho" />
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Textura Wines"
-                    android:fontFamily="@font/museo_bold"
-                    android:gravity="center"
-                    android:paddingTop="8dp" />
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Vinha Negroa\n2018"
-                    android:gravity="center" />
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="R$ 750"
-                    android:fontFamily="@font/museo_bold"
-                    android:gravity="center"
-                    android:paddingTop="4dp" />
+                <ImageButton
+                    android:id="@+id/menuButton"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:src="@drawable/menu"
+                    android:background="?attr/selectableItemBackgroundBorderless"
+                    android:contentDescription="Menu" />
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="2"
+                android:gravity="center">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/headerLogin"
+                    android:textSize="20sp"
+                    android:textColor="#000000"
+                    android:fontFamily="@font/museo_bold" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:orientation="vertical"
-                android:background="@android:color/white"
-                android:padding="8dp"
-                android:layout_marginStart="6dp"
-                android:elevation="4dp">
+                android:gravity="center_vertical|end">
 
-                <ImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="180dp"
-                    android:src="@drawable/vinho" />
+                <ImageButton
+                    android:id="@+id/cartButton"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:src="@drawable/carrinho"
+                    android:background="?attr/selectableItemBackgroundBorderless"
+                    android:contentDescription="Carrinho" />
+            </LinearLayout>
 
-                <TextView
-                    android:layout_width="match_parent"
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="8dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center"
+                android:layout_marginBottom="12dp">
+
+                <LinearLayout
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:text="Textura Wines"
-                    android:fontFamily="@font/museo_bold"
-                    android:gravity="center"
-                    android:paddingTop="8dp" />
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:background="@android:color/white"
+                    android:padding="8dp"
+                    android:layout_marginStart="6dp"
+                    android:elevation="4dp">
 
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Vinha Negroa\n2018"
-                    android:gravity="center" />
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="180dp"
+                        android:src="@drawable/vinho" />
 
-                <TextView
-                    android:layout_width="match_parent"
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Textura Wines"
+                        android:fontFamily="@font/museo_bold"
+                        android:gravity="center"
+                        android:paddingTop="8dp" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Vinha Negroa\n2018"
+                        android:gravity="center" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="R$ 750"
+                        android:fontFamily="@font/museo_bold"
+                        android:gravity="center"
+                        android:paddingTop="4dp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:text="R$ 750"
-                    android:fontFamily="@font/museo_bold"
-                    android:gravity="center"
-                    android:paddingTop="4dp" />
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:background="@android:color/white"
+                    android:padding="8dp"
+                    android:layout_marginStart="6dp"
+                    android:elevation="4dp">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="180dp"
+                        android:src="@drawable/vinho" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Textura Wines"
+                        android:fontFamily="@font/museo_bold"
+                        android:gravity="center"
+                        android:paddingTop="8dp" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Vinha Negroa\n2018"
+                        android:gravity="center" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="R$ 750"
+                        android:fontFamily="@font/museo_bold"
+                        android:gravity="center"
+                        android:paddingTop="4dp" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="8dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center"
+                android:layout_marginBottom="12dp">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:background="@android:color/white"
+                    android:padding="8dp"
+                    android:layout_marginEnd="6dp"
+                    android:elevation="4dp">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="180dp"
+                        android:src="@drawable/vinho" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Textura Wines"
+                        android:fontFamily="@font/museo_bold"
+                        android:gravity="center"
+                        android:paddingTop="8dp" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Vinha Negroa\n2018"
+                        android:fontFamily="@font/museo_bold"
+                        android:gravity="center" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="R$ 750"
+                        android:fontFamily="@font/museo_bold"
+                        android:gravity="center"
+                        android:paddingTop="4dp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:background="@android:color/white"
+                    android:padding="8dp"
+                    android:layout_marginStart="6dp"
+                    android:elevation="4dp">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="180dp"
+                        android:src="@drawable/vinho" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Textura Wines"
+                        android:fontFamily="@font/museo_bold"
+                        android:gravity="center"
+                        android:paddingTop="8dp" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Vinha Negroa\n2018"
+                        android:fontFamily="@font/museo_bold"
+                        android:gravity="center" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="R$ 750"
+                        android:fontFamily="@font/museo_bold"
+                        android:gravity="center"
+                        android:paddingTop="4dp" />
+                </LinearLayout>
+
             </LinearLayout>
 
         </LinearLayout>
 
     </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:padding="8dp">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:gravity="center"
-            android:layout_marginBottom="12dp">
-
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:orientation="vertical"
-                android:background="@android:color/white"
-                android:padding="8dp"
-                android:layout_marginEnd="6dp"
-                android:elevation="4dp">
-
-                <ImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="180dp"
-                    android:src="@drawable/vinho" />
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Textura Wines"
-                    android:fontFamily="@font/museo_bold"
-                    android:gravity="center"
-                    android:paddingTop="8dp" />
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Vinha Negroa\n2018"
-                    android:fontFamily="@font/museo_bold"
-                    android:gravity="center" />
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="R$ 750"
-                    android:fontFamily="@font/museo_bold"
-                    android:gravity="center"
-                    android:paddingTop="4dp" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:orientation="vertical"
-                android:background="@android:color/white"
-                android:padding="8dp"
-                android:layout_marginStart="6dp"
-                android:elevation="4dp">
-
-                <ImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="180dp"
-                    android:src="@drawable/vinho" />
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Textura Wines"
-                    android:fontFamily="@font/museo_bold"
-                    android:gravity="center"
-                    android:paddingTop="8dp" />
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Vinha Negroa\n2018"
-                    android:fontFamily="@font/museo_bold"
-                    android:gravity="center" />
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="R$ 750"
-                    android:fontFamily="@font/museo_bold"
-                    android:gravity="center"
-                    android:paddingTop="4dp" />
-            </LinearLayout>
-
-        </LinearLayout>
-
-    </LinearLayout>
-
-</LinearLayout>
