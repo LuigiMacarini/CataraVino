@@ -4,7 +4,6 @@ public class VinhoModel {
 
     public static final String TABELA_VINHO = "vinho";
 
-    // SQL para criar a tabela
     public static final String CREATE_TABLE = "CREATE TABLE " + TABELA_VINHO + " ("
             + "nome TEXT PRIMARY KEY,"
             + "safra INTEGER,"

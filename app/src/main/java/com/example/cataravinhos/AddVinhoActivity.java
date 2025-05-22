@@ -20,7 +20,7 @@ import java.util.List;
 
 public class AddVinhoActivity extends AppCompatActivity {
 
-    private EditText editNome, editSafra, editTipo, editNotas, editHarmonizacoes, editImagem;
+    private EditText editNome, editSafra, editTipo, editNotas, editHarmonizacoes;
     private Button btnSalvar, btnApagar, btnSelecionarImagem;
     private EditText editNomeParaApagar;
     private TextView textListaVinhos;
