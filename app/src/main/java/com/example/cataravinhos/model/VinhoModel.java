@@ -7,48 +7,69 @@ public class VinhoModel {
     // SQL para criar a tabela
     public static final String CREATE_TABLE = "CREATE TABLE " + TABELA_VINHO + " ("
             + "nome TEXT PRIMARY KEY,"
-            + "preco REAL,"
-            + "descricao TEXT,"
-            + "ano INTEGER,"
-            + "genero TEXT"
+            + "safra INTEGER,"
+            + "tipo TEXT,"
+            + "notasDegustacao TEXT,"
+            + "harmonizacoes TEXT,"
+            + "imagem TEXT"
             + ");";
 
     private String nome;
-    private double preco;
-    private String descricao;
-    private int ano;
-    private String genero;
+    private int safra;
+    private String tipo;
+    private String notasDegustacao;
+    private String harmonizacoes;
+    private String imagem;
 
     public VinhoModel() {}
+
+    // Getters e Setters
 
     public String getNome() {
         return nome;
     }
+
     public void setNome(String nome) {
         this.nome = nome;
     }
-    public double getPreco() {
-        return preco;
+
+    public int getSafra() {
+        return safra;
     }
-    public void setPreco(double preco) {
-        this.preco = preco;
+
+    public void setSafra(int safra) {
+        this.safra = safra;
     }
-    public String getDescricao() {
-        return descricao;
+
+    public String getTipo() {
+        return tipo;
     }
-    public void setDescricao(String descricao) {
-        this.descricao = descricao;
+
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
     }
-    public int getAno() {
-        return ano;
+
+    public String getNotasDegustacao() {
+        return notasDegustacao;
     }
-    public void setAno(int ano) {
-        this.ano = ano;
+
+    public void setNotasDegustacao(String notasDegustacao) {
+        this.notasDegustacao = notasDegustacao;
     }
-    public String getGenero() {
-        return genero;
+
+    public String getHarmonizacoes() {
+        return harmonizacoes;
     }
-    public void setGenero(String genero) {
-        this.genero = genero;
+
+    public void setHarmonizacoes(String harmonizacoes) {
+        this.harmonizacoes = harmonizacoes;
+    }
+
+    public String getImagem() {
+        return imagem;
+    }
+
+    public void setImagem(String imagem) {
+        this.imagem = imagem;
     }
 }

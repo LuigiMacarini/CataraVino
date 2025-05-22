@@ -14,37 +14,45 @@
         android:inputType="textPersonName" />
 
     <EditText
-        android:id="@+id/editPreco"
+        android:id="@+id/editSafra"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Preço"
+        android:hint="Safra"
         android:inputType="numberDecimal"
         android:layout_marginTop="16dp" />
 
     <EditText
-        android:id="@+id/editDescricao"
+        android:id="@+id/editTipo"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Descrição"
+        android:hint="Tipo"
         android:inputType="textMultiLine"
         android:layout_marginTop="16dp" />
 
     <EditText
-        android:id="@+id/editAno"
+        android:id="@+id/editNotas"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Ano"
-        android:inputType="number"
-        android:layout_marginTop="16dp" />
-
-    <!-- Novo campo para gênero -->
-    <EditText
-        android:id="@+id/editGenero"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Gênero"
+        android:hint="Notas"
         android:inputType="text"
         android:layout_marginTop="16dp" />
+
+    <EditText
+        android:id="@+id/editHarmonizacoes"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Harmonização"
+        android:inputType="text"
+        android:layout_marginTop="16dp" />
+
+    <Button
+        android:id="@+id/btnSelecionarImagem"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Selecione a imagem"
+        android:inputType="textUri"
+        android:layout_marginTop="16dp" />
+
 
     <Button
         android:id="@+id/btnSalvarVinho"
@@ -53,12 +61,6 @@
         android:text="Salvar"
         android:layout_marginTop="24dp" />
 
-    <Button
-        android:id="@+id/btnListar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Listar vinhos (Logcat)"
-        android:layout_marginTop="16dp" />
 
     <TextView
         android:id="@+id/textListaVinhos"
@@ -69,8 +71,15 @@
         android:paddingTop="16dp"
         android:textColor="#000000"
         />
+    <ImageView
+        android:id="@+id/imageViewPreview"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:scaleType="centerCrop"
+        android:contentDescription="Preview da imagem" />
 
-    <!-- Se quiser apagar pelo nome (já que id não existe no modelo) -->
+
+
     <EditText
         android:id="@+id/editNomeParaApagar"
         android:layout_width="match_parent"

@@ -24,16 +24,16 @@ public class VinhoDAO {
         ContentValues valores = new ContentValues();
 
         valores.put("nome", vinho.getNome());
-        valores.put("preco", vinho.getPreco());
-        valores.put("descricao", vinho.getDescricao());
-        valores.put("ano", vinho.getAno());
-        valores.put("genero", vinho.getGenero()); // novo campo
+        valores.put("safra", vinho.getSafra());
+        valores.put("tipo", vinho.getTipo());
+        valores.put("notasDegustacao", vinho.getNotasDegustacao());
+        valores.put("harmonizacoes", vinho.getHarmonizacoes());
+        valores.put("imagem", vinho.getImagem());
 
         long resultado = db.insert(VinhoModel.TABELA_VINHO, null, valores);
         db.close();
         return resultado != -1;
     }
-
 
     public List<VinhoModel> listarVinhos() {
         List<VinhoModel> lista = new ArrayList<>();
@@ -46,10 +46,11 @@ public class VinhoDAO {
             do {
                 VinhoModel vinho = new VinhoModel();
                 vinho.setNome(cursor.getString(cursor.getColumnIndexOrThrow("nome")));
-                vinho.setPreco(cursor.getDouble(cursor.getColumnIndexOrThrow("preco")));
-                vinho.setDescricao(cursor.getString(cursor.getColumnIndexOrThrow("descricao")));
-                vinho.setAno(cursor.getInt(cursor.getColumnIndexOrThrow("ano")));
-                vinho.setGenero(cursor.getString(cursor.getColumnIndexOrThrow("genero")));
+                vinho.setSafra(Integer.parseInt(cursor.getString(cursor.getColumnIndexOrThrow("safra"))));
+                vinho.setTipo(cursor.getString(cursor.getColumnIndexOrThrow("tipo")));
+                vinho.setNotasDegustacao(cursor.getString(cursor.getColumnIndexOrThrow("notasDegustacao")));
+                vinho.setHarmonizacoes(cursor.getString(cursor.getColumnIndexOrThrow("harmonizacoes")));
+                vinho.setImagem(cursor.getString(cursor.getColumnIndexOrThrow("imagem")));
 
                 lista.add(vinho);
             } while (cursor.moveToNext());
@@ -66,8 +67,4 @@ public class VinhoDAO {
         db.close();
         return rowsDeleted > 0;
     }
-
-
-
-
 }

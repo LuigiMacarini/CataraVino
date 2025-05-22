@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
 
     <application
         android:allowBackup="true"
@@ -15,7 +16,7 @@
 
 
         <activity
-            android:name=".CadastroActivity"
+            android:name=".AddVinhoActivity"
             android:exported="true"
             tools:ignore="MissingClass">
             <intent-filter>
@@ -25,8 +26,6 @@
         </activity>
 
         <activity android:name=".Historia"/>
-
-
         <activity android:name=".WinesActivity" />
         <activity android:name=".GenresActivity" />
         <activity android:name=".ContactActivity" />
