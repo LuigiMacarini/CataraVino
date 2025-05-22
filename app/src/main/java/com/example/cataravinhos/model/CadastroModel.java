@@ -12,6 +12,12 @@ public class CadastroModel {
     public static final String COLUNA_CONTATO = "contato";
     public static final String COLUNA_EMAIL = "email";
     public static final String COLUNA_SENHA = "senha";
+    public static final String COLUNA_PERFIL = "perfil";
+
+    // Constantes para os tipos de perfil
+    public static final String PERFIL_USER = "user";
+    public static final String PERFIL_ADMIN = "layout/admin";
+    public static final String PERFIL_REPRESENTANTE = "representante";
 
     public static final String CREATE_TABLE =
             "CREATE TABLE " + TABELA_CADASTRO + " (" +
@@ -22,7 +28,8 @@ public class CadastroModel {
                     COLUNA_RESPONSAVEL + " TEXT, " +
                     COLUNA_CONTATO + " TEXT, " +
                     COLUNA_EMAIL + " TEXT NOT NULL, " +
-                    COLUNA_SENHA + " TEXT NOT NULL);";
+                    COLUNA_SENHA + " TEXT NOT NULL, " +
+                    COLUNA_PERFIL + " TEXT NOT NULL DEFAULT '" + PERFIL_USER + "');";
 
     private int id;
     private String nome;
@@ -32,11 +39,14 @@ public class CadastroModel {
     private String contato;
     private String email;
     private String senha;
+    private String perfil;
 
-    public CadastroModel() {}
+    public CadastroModel() {
+        this.perfil = PERFIL_USER; // Perfil padrão
+    }
 
     public CadastroModel(int id, String nome, String cpfOuCnpj, String endereco,
-                         String responsavel, String contato, String email, String senha) {
+                         String responsavel, String contato, String email, String senha, String perfil) {
         this.id = id;
         this.nome = nome;
         this.cpfOuCnpj = cpfOuCnpj;
@@ -45,6 +55,7 @@ public class CadastroModel {
         this.contato = contato;
         this.email = email;
         this.senha = senha;
+        this.perfil = perfil != null ? perfil : PERFIL_USER;
     }
 
     // Getters e Setters
@@ -79,4 +90,23 @@ public class CadastroModel {
     public String getSenha() { return senha; }
 
     public void setSenha(String senha) { this.senha = senha; }
+
+    public String getPerfil() { return perfil; }
+
+    public void setPerfil(String perfil) {
+        this.perfil = perfil != null ? perfil : PERFIL_USER;
+    }
+
+    // Métodos auxiliares para verificar perfil
+    public boolean isAdmin() {
+        return PERFIL_ADMIN.equals(this.perfil);
+    }
+
+    public boolean isRepresentante() {
+        return PERFIL_REPRESENTANTE.equals(this.perfil);
+    }
+
+    public boolean isUser() {
+        return PERFIL_USER.equals(this.perfil);
+    }
 }

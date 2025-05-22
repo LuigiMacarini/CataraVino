@@ -1,42 +1,169 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:fillViewport="true">
 
     <LinearLayout
-        android:padding="20dp"
-        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="20dp">
 
-        <EditText android:id="@+id/edtNome" android:hint="Nome" android:layout_width="match_parent" android:layout_height="wrap_content" />
-        <EditText android:id="@+id/edtCpfCnpj" android:hint="CPF ou CNPJ" android:layout_width="match_parent" android:layout_height="wrap_content" />
-        <EditText android:id="@+id/edtEndereco" android:hint="Endereço" android:layout_width="match_parent" android:layout_height="wrap_content" />
-        <EditText android:id="@+id/edtResponsavel" android:hint="Responsável" android:layout_width="match_parent" android:layout_height="wrap_content" />
-        <EditText android:id="@+id/edtContato" android:hint="Contato" android:layout_width="match_parent" android:layout_height="wrap_content" />
-        <EditText android:id="@+id/edtEmail" android:hint="Email" android:layout_width="match_parent" android:layout_height="wrap_content" />
-        <EditText android:id="@+id/edtSenha" android:hint="Senha" android:inputType="textPassword" android:layout_width="match_parent" android:layout_height="wrap_content" />
+        <!-- Título -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Cadastro de Usuário"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:textColor="#333333"
+            android:gravity="center"
+            android:layout_marginBottom="20dp" />
 
-        <Button android:id="@+id/btnCadastrar" android:text="Cadastrar" android:layout_width="match_parent" android:layout_height="wrap_content"/>
+        <!-- Campos de entrada -->
+        <EditText
+            android:id="@+id/edtNome"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:hint="Nome *"
+            android:inputType="textPersonName"
+            android:layout_marginBottom="12dp"
+            android:padding="12dp"
+            android:background="@drawable/edittext_border" />
 
-        <!-- Resultado será mostrado aqui -->
+        <EditText
+            android:id="@+id/edtCpfCnpj"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:hint="CPF ou CNPJ *"
+            android:inputType="number"
+            android:layout_marginBottom="12dp"
+            android:padding="12dp"
+            android:background="@drawable/edittext_border" />
+
+        <EditText
+            android:id="@+id/edtEndereco"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:hint="Endereço"
+            android:inputType="textPostalAddress"
+            android:layout_marginBottom="12dp"
+            android:padding="12dp"
+            android:background="@drawable/edittext_border" />
+
+        <EditText
+            android:id="@+id/edtResponsavel"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:hint="Responsável"
+            android:inputType="textPersonName"
+            android:layout_marginBottom="12dp"
+            android:padding="12dp"
+            android:background="@drawable/edittext_border" />
+
+        <EditText
+            android:id="@+id/edtContato"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:hint="Contato (Telefone)"
+            android:inputType="phone"
+            android:layout_marginBottom="12dp"
+            android:padding="12dp"
+            android:background="@drawable/edittext_border" />
+
+        <EditText
+            android:id="@+id/edtEmail"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginBottom="12dp"
+            android:background="@drawable/edittext_border"
+            android:hint="Email *"
+            android:inputType="textEmailAddress"
+            android:padding="12dp" />
+
+        <EditText
+            android:id="@+id/edtSenha"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:hint="Senha *"
+            android:inputType="textPassword"
+            android:layout_marginBottom="12dp"
+            android:padding="12dp"
+            android:background="@drawable/edittext_border" />
+
+        <!-- Spinner para Perfil -->
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:text="Perfil do Usuário:"
+            android:textColor="#333333"
+            android:textSize="16sp" />
+
+        <!-- Botões -->
+
+        <Spinner
+            android:id="@+id/spinnerPerfil"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginBottom="20dp"
+            android:background="@drawable/spinner_border"
+            android:padding="12dp" />
+
+        <Button
+            android:id="@+id/btnCadastrar"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:text="Cadastrar"
+            android:textSize="18sp"
+            android:textColor="#FFFFFF"
+            android:background="@drawable/rounded_button"
+            android:layout_marginBottom="16dp" />
+
+        <Button
+            android:id="@+id/btnListarCadastros"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:text="Listar Todos os Cadastros"
+            android:textSize="16sp"
+            android:textColor="#fff"
+            android:background="@drawable/rounded_button"
+            android:layout_marginBottom="20dp" />
+
+        <!-- Área de resultado -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Resultado:"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:textColor="#333333"
+            android:layout_marginBottom="8dp" />
+
         <TextView
             android:id="@+id/txtResultado"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingTop="20dp"
-            android:textSize="16sp"
-            android:textColor="#000000"
-            android:text="Resultado aparecerá aqui..." />
+            android:text="Os resultados aparecerão aqui..."
+            android:textSize="14sp"
+            android:textColor="#666666"
+            android:background="@drawable/result_background"
+            android:padding="16dp"
+            android:minHeight="100dp"
+            android:gravity="top"
+            android:scrollbars="vertical" />
 
-        <Button
+        <!-- Legenda -->
+        <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/btnListarCadastros"
-            android:text="Listar Todos os Cadastros"/>
-
-
-
+            android:text="* Campos obrigatórios"
+            android:textSize="12sp"
+            android:textColor="#999999"
+            android:layout_marginTop="16dp"
+            android:gravity="center" />
 
     </LinearLayout>
 </ScrollView>
