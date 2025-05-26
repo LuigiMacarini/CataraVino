@@ -38,7 +38,7 @@ public class CatalogoActivity extends AppCompatActivity {
         navigationView.setNavigationItemSelectedListener(item -> {
             int id = item.getItemId();
             if (id == R.id.nav_wines) {
-                startActivity(new Intent(this, WinesActivity.class));
+                startActivity(new Intent(this, CatalogoActivity.class));
             } else if (id == R.id.nav_genres) {
                 startActivity(new Intent(this, GenresActivity.class));
             } else if (id == R.id.nav_contact) {
