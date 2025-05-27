@@ -10,20 +10,25 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <EditText
+        <AutoCompleteTextView
             android:id="@+id/etClienteId"
-            android:hint="ID do Cliente"
-            android:inputType="number"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-
-        <EditText
-            android:id="@+id/etRepresentanteId"
-            android:hint="ID do Representante"
-            android:inputType="number"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp" />
+            android:hint="Selecione o Cliente"
+            android:inputType="none"
+            android:focusable="false"
+            android:clickable="true" />
+
+        <AutoCompleteTextView
+            android:id="@+id/etRepresentanteId"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Selecione o Representante"
+            android:inputType="none"
+            android:focusable="false"
+            android:clickable="true" />
+
+
 
         <EditText
             android:id="@+id/etValorTotal"
@@ -55,5 +60,13 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp" />
+
+        <Button
+            android:id="@+id/btnListarPedidos"
+            android:text="Listar Pedidos"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp" />
+
     </LinearLayout>
 </ScrollView>

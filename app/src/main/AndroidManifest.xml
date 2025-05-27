@@ -16,7 +16,7 @@
 
 
         <activity
-            android:name=".AddVinhoActivity"
+            android:name=".ActivityComissao"
             android:exported="true"
             tools:ignore="MissingClass">
             <intent-filter>
