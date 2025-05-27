@@ -10,10 +10,13 @@ import com.example.cataravinhos.model.VinhoModel;
 import com.example.cataravinhos.model.PedidoModel;
 import com.example.cataravinhos.model.ComissaoModel;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class DBOpenHelper extends SQLiteOpenHelper {
 
     private static final String DATABASE_NOME = "banco.db";
-    private static final int DATABASE_VERSAO = 6;
+    private static final int DATABASE_VERSAO = 8 ;
 
     public DBOpenHelper(Context context) {
         super(context, DATABASE_NOME, null, DATABASE_VERSAO);
@@ -81,5 +84,29 @@ public class DBOpenHelper extends SQLiteOpenHelper {
             if (cursor != null) cursor.close();
         }
         return existe;
+    }
+
+    public List<String> buscarUsuariosPorPerfil(String perfil) {
+        List<String> lista = new ArrayList<>();
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        String[] colunas = {CadastroModel.COLUNA_ID, CadastroModel.COLUNA_NOME};
+        String selecao = CadastroModel.COLUNA_PERFIL + " = ?";
+        String[] args = {perfil};
+
+        Cursor cursor = db.query(CadastroModel.TABELA_CADASTRO, colunas, selecao, args, null, null, CadastroModel.COLUNA_NOME + " ASC");
+
+        if (cursor.moveToFirst()) {
+            do {
+                int id = cursor.getInt(cursor.getColumnIndexOrThrow(CadastroModel.COLUNA_ID));
+                String nome = cursor.getString(cursor.getColumnIndexOrThrow(CadastroModel.COLUNA_NOME));
+                lista.add(id + " - " + nome);
+            } while (cursor.moveToNext());
+        }
+
+        cursor.close();
+        db.close();
+
+        return lista;
     }
 }

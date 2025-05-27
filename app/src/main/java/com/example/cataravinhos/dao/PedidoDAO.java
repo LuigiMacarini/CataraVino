@@ -23,7 +23,8 @@ public class PedidoDAO {
     }
 
     // Salvar novo pedido
-    public boolean salvar(PedidoModel pedido) {
+    // No PedidoDAO.java
+    public long salvar(PedidoModel pedido) {
         ContentValues valores = new ContentValues();
         valores.put(PedidoModel.COLUNA_USER_ID, pedido.getUserId());
         valores.put(PedidoModel.COLUNA_REPRESENTANTE_ID, pedido.getRepresentanteId());
@@ -32,13 +33,54 @@ public class PedidoDAO {
         valores.put(PedidoModel.COLUNA_STATUS, pedido.getStatus());
 
         try {
-            escreve.insert(PedidoModel.TABELA_PEDIDOS, null, valores);
-            return true;
+            long idPedido = escreve.insert(PedidoModel.TABELA_PEDIDOS, null, valores);
+
+            if (idPedido != -1) {
+                // Você pode incluir aqui a lógica para salvar comissão, se quiser
+                return idPedido;
+            } else {
+                return -1;
+            }
+
         } catch (Exception e) {
             e.printStackTrace();
-            return false;
+            return -1;
         }
     }
+
+    // Buscar todos os pedidos (sem filtro)
+    public List<PedidoModel> listarPedidos() {
+        List<PedidoModel> lista = new ArrayList<>();
+
+        Cursor cursor = le.query(
+                PedidoModel.TABELA_PEDIDOS,
+                null,       // todas as colunas
+                null,       // sem cláusula WHERE
+                null,
+                null,
+                null,
+                null
+        );
+
+        if (cursor != null && cursor.moveToFirst()) {
+            do {
+                PedidoModel pedido = new PedidoModel();
+                pedido.setId(cursor.getInt(cursor.getColumnIndexOrThrow(PedidoModel.COLUNA_ID)));
+                pedido.setUserId(cursor.getInt(cursor.getColumnIndexOrThrow(PedidoModel.COLUNA_USER_ID)));
+                pedido.setRepresentanteId(cursor.getInt(cursor.getColumnIndexOrThrow(PedidoModel.COLUNA_REPRESENTANTE_ID)));
+                pedido.setValorTotal(cursor.getDouble(cursor.getColumnIndexOrThrow(PedidoModel.COLUNA_VALOR_TOTAL)));
+                pedido.setComissao(cursor.getDouble(cursor.getColumnIndexOrThrow(PedidoModel.COLUNA_COMISSAO)));
+                pedido.setStatus(cursor.getString(cursor.getColumnIndexOrThrow(PedidoModel.COLUNA_STATUS)));
+
+                lista.add(pedido);
+            } while (cursor.moveToNext());
+        }
+
+        if (cursor != null) cursor.close();
+        return lista;
+    }
+
+
 
     // Buscar todos os pedidos de um representante
     public List<PedidoModel> listarPorRepresentante(int representanteId) {
