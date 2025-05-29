@@ -25,15 +25,13 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".Historia"/>
-        <activity android:name=".WinesActivity" />
-        <activity android:name=".GenresActivity" />
-        <activity android:name=".ContactActivity" />
         <activity android:name=".Info" />
         <activity android:name=".CartActivity" />
         <activity android:name=".Home" />
         <activity android:name=".Login"/>
         <activity android:name=".CatalogoActivity"/>
+        <activity android:name=".DetalhesVinhoActivity"/>
+
 
     </application>
 

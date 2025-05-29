@@ -1,6 +1,6 @@
 package com.example.cataravinhos;
 
-
+import android.content.Context;
 import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,16 +17,18 @@ import java.io.File;
 import java.util.List;
 
 public class VinhoAdapter extends RecyclerView.Adapter<VinhoAdapter.VinhoViewHolder> {
+    private Context context;
     private List<VinhoModel> vinhos;
 
-    public VinhoAdapter(List<VinhoModel> vinhos) {
+    public VinhoAdapter(Context context, List<VinhoModel> vinhos) {
+        this.context = context;
         this.vinhos = vinhos;
     }
 
     @NonNull
     @Override
     public VinhoViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_vinho, parent, false);
+        View view = LayoutInflater.from(context).inflate(R.layout.item_vinho, parent, false);
         return new VinhoViewHolder(view);
     }
 
@@ -35,7 +37,7 @@ public class VinhoAdapter extends RecyclerView.Adapter<VinhoAdapter.VinhoViewHol
         VinhoModel vinho = vinhos.get(position);
 
         holder.textViewInfo.setText(
-                        "Nome: " + vinho.getNome() + "\n" +
+                "Nome: " + vinho.getNome() + "\n" +
                         "Safra: " + vinho.getSafra() + "\n" +
                         "Tipo: " + vinho.getTipo() + "\n" +
                         "Notas: " + vinho.getNotasDegustacao() + "\n" +
@@ -47,7 +49,7 @@ public class VinhoAdapter extends RecyclerView.Adapter<VinhoAdapter.VinhoViewHol
             try {
                 holder.imageView.setImageURI(Uri.parse(vinho.getImagem()));
             } catch (Exception e) {
-                e.printStackTrace(); // vai evitar o crash NÃO MEXER
+                e.printStackTrace(); // evita crash
                 holder.imageView.setImageURI(Uri.fromFile(new File(vinho.getImagem())));
             }
         } else {
