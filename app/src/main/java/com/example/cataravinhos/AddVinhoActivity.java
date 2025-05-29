@@ -230,10 +230,10 @@ public class AddVinhoActivity extends AppCompatActivity {
 
         RecyclerView recyclerView = findViewById(R.id.recyclerViewVinhos);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        recyclerView.setAdapter(new VinhoAdapter(lista));
+        recyclerView.setAdapter(new VinhoAdapter(this, lista));  // <-- Passa o 'this' como Context
 
         textListaVinhos.setText("");
     }
-    }
+}
 
 

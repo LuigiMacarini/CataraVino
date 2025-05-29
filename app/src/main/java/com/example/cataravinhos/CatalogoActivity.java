@@ -86,6 +86,7 @@ public class CatalogoActivity extends AppCompatActivity {
         intent.putExtra("tipo", tipo);
         intent.putExtra("notas", notas);
         intent.putExtra("harmonizacoes", harmonizacoes);
+        intent.putExtra("imagemResId", R.drawable.vinho); // Enviando imagem do drawable
         startActivity(intent);
     }
 }
