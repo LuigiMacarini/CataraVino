@@ -2,7 +2,8 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="16dp">
+    android:padding="24dp"
+    android:background="#FFF8F3">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -12,19 +13,22 @@
 
         <ImageView
             android:id="@+id/imagemVinho"
-            android:layout_width="150dp"
-            android:layout_height="150dp"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
             android:layout_marginBottom="16dp"
-            android:scaleType="fitCenter"
-            android:contentDescription="Imagem do vinho" />
+            android:scaleType="centerCrop"
+            android:contentDescription="Imagem do vinho"
+            android:background="@android:color/darker_gray"
+            android:elevation="4dp" />
 
         <TextView
             android:id="@+id/tituloVinho"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Nome do Vinho"
-            android:textSize="20sp"
+            android:textSize="22sp"
             android:textStyle="bold"
+            android:textColor="#4E342E"
             android:layout_marginBottom="12dp" />
 
         <TextView
@@ -32,33 +36,41 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Tipo"
-            android:layout_marginBottom="8dp" />
+            android:textSize="16sp"
+            android:layout_marginBottom="6dp" />
 
         <TextView
             android:id="@+id/safraVinho"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Safra"
-            android:layout_marginBottom="8dp" />
+            android:textSize="16sp"
+            android:layout_marginBottom="6dp" />
 
         <TextView
             android:id="@+id/notasDegustacao"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Notas de degustação"
-            android:layout_marginBottom="8dp" />
+            android:textSize="16sp"
+            android:layout_marginBottom="6dp" />
 
         <TextView
             android:id="@+id/harmonizacoes"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Harmonizações"
-            android:layout_marginBottom="16dp" />
+            android:textSize="16sp"
+            android:layout_marginBottom="24dp" />
 
         <Button
             android:id="@+id/btnVoltar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Voltar" />
+            android:text="Voltar"
+            android:backgroundTint="#8D6E63"
+            android:textColor="#FFFFFF"
+            android:paddingHorizontal="24dp"
+            android:paddingVertical="8dp" />
     </LinearLayout>
 </ScrollView>
