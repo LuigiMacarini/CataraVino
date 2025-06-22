@@ -70,5 +70,12 @@ public class VinhoAdapter extends RecyclerView.Adapter<VinhoAdapter.VinhoViewHol
             textViewInfo = itemView.findViewById(R.id.textViewInfoVinho);
         }
     }
+
+    public void atualizarLista(List<VinhoModel> novaLista) {
+        this.vinhos.clear();
+        this.vinhos.addAll(novaLista);
+        notifyDataSetChanged();
+    }
+
 }
 

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:background="#EFE0D1">
+
+    <!-- Campo de busca -->
+    <EditText
+        android:id="@+id/editPesquisaVinho"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Pesquisar vinho"
+        android:inputType="text"
+        android:drawableStart="@android:drawable/ic_menu_search"
+        android:padding="12dp"
+        android:background="@drawable/edittext_background"
+        android:layout_marginBottom="12dp"/>
+
+    <!-- RecyclerView para listar vinhos -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerViewListaVinhos"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:clipToPadding="false" />
+
+    <!-- Botão para cadastrar novo vinho -->
+    <Button
+        android:id="@+id/btnCadastrarNovoVinho"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Cadastrar novo vinho"
+        android:backgroundTint="#000000"
+        android:textColor="#FFFFFF"
+        android:layout_marginTop="12dp"/>
+
+</LinearLayout>
