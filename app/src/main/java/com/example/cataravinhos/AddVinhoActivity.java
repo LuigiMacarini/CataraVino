@@ -7,15 +7,18 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import androidx.appcompat.app.AppCompatActivity;
-
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import com.example.cataravinhos.dao.VinhoDAO;
 import com.example.cataravinhos.model.VinhoModel;
-
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.util.List;
 
 public class AddVinhoActivity extends AppCompatActivity {
@@ -37,7 +40,6 @@ public class AddVinhoActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_wine);
 
-
         editNome = findViewById(R.id.editNome);
         editSafra = findViewById(R.id.editSafra);
         editTipo = findViewById(R.id.editTipo);
@@ -45,13 +47,19 @@ public class AddVinhoActivity extends AppCompatActivity {
         editHarmonizacoes = findViewById(R.id.editHarmonizacoes);
         editNomeParaApagar = findViewById(R.id.editNomeParaApagar);
         textListaVinhos = findViewById(R.id.textListaVinhos);
+        imageViewPreview = findViewById(R.id.imageViewPreview);
         btnSalvar = findViewById(R.id.btnSalvarVinho);
         btnApagar = findViewById(R.id.btnApagar);
-        imageViewPreview = findViewById(R.id.imageViewPreview);
         btnSelecionarImagem = findViewById(R.id.btnSelecionarImagem);
         btnSelecionarImagem.setOnClickListener(v -> abrirGaleria());
 
         vinhoDAO = new VinhoDAO(this);
+
+       //FUNÇÃO PARA APAGAR O DB DEPOIS DE TESTAR
+        // VinhoDAO dao = new VinhoDAO(this);
+        //dao.apagarTodos(); // apaga todos os vinhos
+        // apagarTodasImagens(); // apaga imagens locais
+
 
         btnSalvar.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -68,7 +76,7 @@ public class AddVinhoActivity extends AppCompatActivity {
         });
 
 
-        listarVinhos(); // exibe lista ao abrir
+        listarVinhos(); //lista
     }
 
 
@@ -85,13 +93,19 @@ public class AddVinhoActivity extends AppCompatActivity {
 
         if (requestCode == PICK_IMAGE_REQUEST && resultCode == RESULT_OK && data != null) {
             Uri imagemUri = data.getData();
-            imagemUriSelecionada = imagemUri.toString(); // Salva o URI como String
 
-            // Exibe a imagem selecionada no ImageView
-            imageViewPreview.setImageURI(imagemUri);
-            btnSelecionarImagem.setText("Imagem selecionada");
+
+            String caminhoSalvo = salvarImagemInternamente(imagemUri);
+            if (caminhoSalvo != null) {
+                imagemUriSelecionada = caminhoSalvo;
+                imageViewPreview.setImageURI(Uri.fromFile(new File(caminhoSalvo)));
+                btnSelecionarImagem.setText("Imagem selecionada");
+            } else {
+                Toast.makeText(this, "Erro ao salvar imagem", Toast.LENGTH_SHORT).show();
+            }
         }
     }
+
 
     private void salvarVinho() {
         String nome = editNome.getText().toString().trim();
@@ -123,6 +137,7 @@ public class AddVinhoActivity extends AppCompatActivity {
         vinho.setNotasDegustacao(notas);
         vinho.setHarmonizacoes(harmonizacoes);
         vinho.setImagem(imagem);
+        vinho.setImagem(imagemUriSelecionada);
 
         boolean sucesso = vinhoDAO.inserirVinho(vinho);
         if (sucesso) {
@@ -132,7 +147,37 @@ public class AddVinhoActivity extends AppCompatActivity {
         } else {
             Toast.makeText(this, "Erro ao salvar o vinho", Toast.LENGTH_SHORT).show();
         }
+        limparCampos();
     }
+
+    private String salvarImagemInternamente(Uri uri) {
+        try {
+            InputStream inputStream = getContentResolver().openInputStream(uri);
+            File diretorio = new File(getFilesDir(), "imagens");
+            if (!diretorio.exists()) {
+                diretorio.mkdir();
+            }
+
+            String nomeArquivo = "img_" + System.currentTimeMillis() + ".jpg";
+            File imagemArquivo = new File(diretorio, nomeArquivo);
+
+            OutputStream outputStream = new FileOutputStream(imagemArquivo);
+            byte[] buffer = new byte[1024];
+            int len;
+            while ((len = inputStream.read(buffer)) > 0) {
+                outputStream.write(buffer, 0, len);
+            }
+
+            inputStream.close();
+            outputStream.close();
+
+            return imagemArquivo.getAbsolutePath(); // <-- salvar isso no banco
+        } catch (IOException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
 
     private void apagarVinho() {
         String nome = editNomeParaApagar.getText().toString().trim();
@@ -152,6 +197,18 @@ public class AddVinhoActivity extends AppCompatActivity {
         }
     }
 
+   /* private void apagarTodasImagens() {
+        File pastaImagens = new File(getFilesDir(), "imagens");
+        if (pastaImagens.exists()) {
+            for (File arquivo : pastaImagens.listFiles()) {
+                arquivo.delete();
+            }
+        }
+    } */
+
+
+
+
     private void limparCampos() {
         editNome.setText("");
         editSafra.setText("");
@@ -161,28 +218,22 @@ public class AddVinhoActivity extends AppCompatActivity {
         btnSelecionarImagem.setText("");
     }
 
+
+
     private void listarVinhos() {
         List<VinhoModel> lista = vinhoDAO.listarVinhos();
-        StringBuilder sb = new StringBuilder();
 
         if (lista.isEmpty()) {
             textListaVinhos.setText("Nenhum vinho cadastrado.");
             return;
         }
 
+        RecyclerView recyclerView = findViewById(R.id.recyclerViewVinhos);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        recyclerView.setAdapter(new VinhoAdapter(this, lista));  // <-- Passa o 'this' como Context
 
-        for (VinhoModel vinho : lista) {
-            sb.append("Nome: ").append(vinho.getNome())
-                    .append(" | Safra: ").append(vinho.getSafra())
-                    .append(" | Tipo: ").append(vinho.getTipo())
-                    .append(" | Notas: ").append(vinho.getNotasDegustacao())
-                    .append(" | Harmonizações: ").append(vinho.getHarmonizacoes())
-                    .append(" | Imagem: ").append(vinho.getImagem())
-                    .append("\n\n");
-        }
-
-
-        textListaVinhos.setText(sb.toString());
+        textListaVinhos.setText("");
     }
 }
+
 

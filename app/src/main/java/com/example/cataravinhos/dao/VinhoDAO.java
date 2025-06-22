@@ -28,6 +28,7 @@ public class VinhoDAO {
         valores.put("tipo", vinho.getTipo());
         valores.put("notasDegustacao", vinho.getNotasDegustacao());
         valores.put("harmonizacoes", vinho.getHarmonizacoes());
+        valores.put("imagem", vinho.getImagem());
 
         long resultado = db.insert(VinhoModel.TABELA_VINHO, null, valores);
         db.close();
@@ -49,6 +50,7 @@ public class VinhoDAO {
                 vinho.setTipo(cursor.getString(cursor.getColumnIndexOrThrow("tipo")));
                 vinho.setNotasDegustacao(cursor.getString(cursor.getColumnIndexOrThrow("notasDegustacao")));
                 vinho.setHarmonizacoes(cursor.getString(cursor.getColumnIndexOrThrow("harmonizacoes")));
+                vinho.setImagem(cursor.getString(cursor.getColumnIndexOrThrow("imagem")));
 
                 lista.add(vinho);
             } while (cursor.moveToNext());
@@ -65,4 +67,10 @@ public class VinhoDAO {
         db.close();
         return rowsDeleted > 0;
     }
+    public void apagarTodos() {
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+        db.delete(VinhoModel.TABELA_VINHO, null, null);
+        db.close();
+    }
+
 }

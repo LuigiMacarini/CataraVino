@@ -1,99 +1,124 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:padding="24dp"
-    android:background="#FAFAFA">
+    android:background="#EFE0D1"
+    android:padding="16dp">
 
-    <EditText
-        android:id="@+id/editNome"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Nome do vinho"
-        android:inputType="textPersonName" />
+        android:orientation="vertical">
 
-    <EditText
-        android:id="@+id/editSafra"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Safra"
-        android:inputType="numberDecimal"
-        android:layout_marginTop="16dp" />
+        <EditText
+            android:id="@+id/editNome"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Nome do vinho"
+            android:inputType="textPersonName"
+            android:background="@drawable/edittext_background"
+            android:padding="12dp"
+            android:layout_marginBottom="12dp" />
 
-    <EditText
-        android:id="@+id/editTipo"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Tipo"
-        android:inputType="textMultiLine"
-        android:layout_marginTop="16dp" />
+        <EditText
+            android:id="@+id/editSafra"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Safra"
+            android:inputType="number"
+            android:background="@drawable/edittext_background"
+            android:padding="12dp"
+            android:layout_marginBottom="12dp" />
 
-    <EditText
-        android:id="@+id/editNotas"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Notas"
-        android:inputType="text"
-        android:layout_marginTop="16dp" />
+        <EditText
+            android:id="@+id/editTipo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Tipo"
+            android:inputType="text"
+            android:background="@drawable/edittext_background"
+            android:padding="12dp"
+            android:layout_marginBottom="12dp" />
 
-    <EditText
-        android:id="@+id/editHarmonizacoes"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Harmonização"
-        android:inputType="text"
-        android:layout_marginTop="16dp" />
+        <EditText
+            android:id="@+id/editNotas"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Notas de degustação"
+            android:inputType="text"
+            android:background="@drawable/edittext_background"
+            android:padding="12dp"
+            android:layout_marginBottom="12dp" />
 
-    <Button
-        android:id="@+id/btnSelecionarImagem"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Selecione a imagem"
-        android:inputType="textUri"
-        android:layout_marginTop="16dp" />
+        <EditText
+            android:id="@+id/editHarmonizacoes"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Harmonização"
+            android:inputType="text"
+            android:background="@drawable/edittext_background"
+            android:padding="12dp"
+            android:layout_marginBottom="12dp" />
 
+        <Button
+            android:id="@+id/btnSelecionarImagem"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Selecionar imagem"
+            android:backgroundTint="#000000"
+            android:textColor="#FFFFFF"
+            android:layout_marginBottom="16dp" />
 
-    <Button
-        android:id="@+id/btnSalvarVinho"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Salvar"
-        android:layout_marginTop="24dp" />
+        <ImageView
+            android:id="@+id/imageViewPreview"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:layout_marginBottom="24dp"
+            android:contentDescription="Prévia da imagem selecionada"
+            android:scaleType="centerCrop"
+            android:background="#CCCCCC" />
 
+        <Button
+            android:id="@+id/btnSalvarVinho"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Salvar vinho"
+            android:backgroundTint="#000000"
+            android:textColor="#FFFFFF"
+            android:layout_marginBottom="24dp" />
 
-    <TextView
-        android:id="@+id/textListaVinhos"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Lista de vinhos aparecerá aqui"
-        android:textSize="16sp"
-        android:paddingTop="16dp"
-        android:textColor="#000000"
-        />
-    <ImageView
-        android:id="@+id/imageViewPreview"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:scaleType="centerCrop"
-        android:contentDescription="Preview da imagem" />
+        <TextView
+            android:id="@+id/textListaVinhos"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Lista de vinhos aparecerá aqui"
+            android:textSize="16sp"
+            android:textColor="#000000"
+            android:layout_marginBottom="12dp" />
 
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerViewVinhos"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="24dp" />
 
+        <EditText
+            android:id="@+id/editNomeParaApagar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Nome do vinho para apagar"
+            android:inputType="text"
+            android:background="@drawable/edittext_background"
+            android:padding="12dp"
+            android:layout_marginBottom="12dp" />
 
-    <EditText
-        android:id="@+id/editNomeParaApagar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Nome do vinho para apagar"
-        android:inputType="text"
-        android:layout_marginTop="24dp"/>
+        <Button
+            android:id="@+id/btnApagar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Apagar vinho"
+            android:backgroundTint="#8B0000"
+            android:textColor="#FFFFFF" />
 
-    <Button
-        android:id="@+id/btnApagar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Apagar vinho"
-        android:layout_marginTop="8dp"/>
-
-
-</LinearLayout>
+    </LinearLayout>
+</ScrollView>
