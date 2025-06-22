@@ -16,7 +16,7 @@
 
 
         <activity
-            android:name=".AddVinhoActivity"
+            android:name=".Login"
             android:exported="true"
             tools:ignore="MissingClass">
             <intent-filter>
@@ -32,8 +32,12 @@
         <activity android:name=".Info" />
         <activity android:name=".CartActivity" />
         <activity android:name=".Home" />
-        <activity android:name=".Login"/>
+        <activity android:name=".AddVinhoActivity"/>
         <activity android:name=".CatalogoActivity"/>
+        <activity android:name=".CadastroActivity"/>
+        <activity android:name=".CadastroPedidoActivity"/>
+        <activity android:name=".ListaClientesActivity"/>
+        <activity android:name=".ListaPedidosActivity"/>
 
     </application>
 

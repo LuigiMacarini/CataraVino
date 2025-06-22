@@ -38,7 +38,7 @@ public class ListaVinhosActivity extends AppCompatActivity {
         vinhoDAO = new VinhoDAO(this);
         listaVinhos = vinhoDAO.listarVinhos();
 
-        adapter = new VinhoAdapter(listaVinhos);
+        adapter = new VinhoAdapter(this, listaVinhos);
         recyclerViewListaVinhos.setLayoutManager(new LinearLayoutManager(this));
         recyclerViewListaVinhos.setAdapter(adapter);
 

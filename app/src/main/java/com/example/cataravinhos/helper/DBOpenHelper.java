@@ -16,7 +16,7 @@ import java.util.List;
 public class DBOpenHelper extends SQLiteOpenHelper {
 
     private static final String DATABASE_NOME = "banco.db";
-    private static final int DATABASE_VERSAO = 8 ;
+    private static final int DATABASE_VERSAO = 10 ;
 
     public DBOpenHelper(Context context) {
         super(context, DATABASE_NOME, null, DATABASE_VERSAO);
