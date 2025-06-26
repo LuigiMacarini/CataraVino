@@ -171,7 +171,7 @@ public class AddVinhoActivity extends AppCompatActivity {
             inputStream.close();
             outputStream.close();
 
-            return imagemArquivo.getAbsolutePath(); // <-- salvar isso no banco
+            return imagemArquivo.getAbsolutePath();
         } catch (IOException e) {
             e.printStackTrace();
             return null;
