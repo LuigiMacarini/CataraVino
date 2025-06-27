@@ -1,72 +1,77 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_gravity="center">
+    android:layout_height="match_parent"
+    android:background="@color/background"
+    android:padding="16dp">
 
     <LinearLayout
-        android:padding="16dp"
-        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
 
-        <AutoCompleteTextView
+        <EditText
             android:id="@+id/etClienteId"
+            android:hint="ID do Cliente"
+            android:inputType="number"
+            android:textColor="#000000"
+            android:background="@drawable/edit_text_background"
+            android:padding="12dp"
+            android:layout_marginBottom="12dp"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Selecione o Cliente"
-            android:inputType="none"
-            android:focusable="false"
-            android:clickable="true" />
+            android:layout_height="wrap_content" />
 
-        <AutoCompleteTextView
+        <EditText
             android:id="@+id/etRepresentanteId"
+            android:hint="ID do Representante"
+            android:inputType="number"
+            android:textColor="#000000"
+            android:background="@drawable/edit_text_background"
+            android:padding="12dp"
+            android:layout_marginBottom="12dp"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Selecione o Representante"
-            android:inputType="none"
-            android:focusable="false"
-            android:clickable="true" />
-
-
+            android:layout_height="wrap_content" />
 
         <EditText
             android:id="@+id/etValorTotal"
             android:hint="Valor Total"
             android:inputType="numberDecimal"
+            android:textColor="#000000"
+            android:background="@drawable/edit_text_background"
+            android:padding="12dp"
+            android:layout_marginBottom="12dp"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp" />
+            android:layout_height="wrap_content" />
 
         <EditText
             android:id="@+id/etComissao"
             android:hint="Comissão"
             android:inputType="numberDecimal"
+            android:textColor="#000000"
+            android:background="@drawable/edit_text_background"
+            android:padding="12dp"
+            android:layout_marginBottom="12dp"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp" />
+            android:layout_height="wrap_content" />
 
         <EditText
             android:id="@+id/etStatus"
             android:hint="Status"
             android:inputType="text"
+            android:textColor="#000000"
+            android:background="@drawable/edit_text_background"
+            android:padding="12dp"
+            android:layout_marginBottom="16dp"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp" />
+            android:layout_height="wrap_content" />
 
         <Button
             android:id="@+id/btnSalvarPedido"
             android:text="Salvar Pedido"
+            android:textColor="#FFFFFF"
+            android:backgroundTint="@color/black"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp" />
-
-        <Button
-            android:id="@+id/btnListarPedidos"
-            android:text="Listar Pedidos"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp" />
-
+            android:padding="14dp" />
     </LinearLayout>
 </ScrollView>
