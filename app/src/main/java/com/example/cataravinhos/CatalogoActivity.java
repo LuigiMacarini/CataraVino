@@ -46,7 +46,7 @@ public class CatalogoActivity extends AppCompatActivity {
             if (id == R.id.nav_wines) {
                 startActivity(new Intent(this, CatalogoActivity.class));
             } else if (id == R.id.nav_genres) {
-                startActivity(new Intent(this, GenresActivity.class));
+                startActivity(new Intent(this, CatalogoActivity.class));
             } else if (id == R.id.nav_contact) {
                 startActivity(new Intent(this, ContactActivity.class));
             }

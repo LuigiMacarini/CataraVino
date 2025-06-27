@@ -69,7 +69,6 @@
                     android:id="@+id/cartButton"
                     android:layout_width="48dp"
                     android:layout_height="48dp"
-                    android:src="@drawable/carrinho"
                     android:background="?attr/selectableItemBackgroundBorderless"
                     android:contentDescription="Carrinho" />
             </LinearLayout>
