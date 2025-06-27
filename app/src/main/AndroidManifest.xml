@@ -38,8 +38,9 @@
         <activity android:name=".CadastroPedidoActivity"/>
         <activity android:name=".ConsultaPedidoActivity"/>
         <activity android:name=".ListaClientesActivity"/>
-        <activity android:name=".ActivityComissao"/>
+        <activity android:name=".ConsultaComissaoActivity"/>
         <activity android:name=".ListaVinhosActivity"/>
+
 
     </application>
 

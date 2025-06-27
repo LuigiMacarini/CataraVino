@@ -6,6 +6,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
 import com.example.cataravinhos.helper.DBOpenHelper;
+import com.example.cataravinhos.model.CadastroModel;
 import com.example.cataravinhos.model.PedidoModel;
 
 import java.util.ArrayList;
@@ -161,47 +162,28 @@ public class PedidoDAO {
         return lista;
     }
 
-    public long inserirPedido(PedidoModel pedido) {
-        ContentValues valores = new ContentValues();
-        valores.put(PedidoModel.COLUNA_USER_ID, pedido.getUserId());
-        valores.put(PedidoModel.COLUNA_REPRESENTANTE_ID, pedido.getRepresentanteId());
-        valores.put(PedidoModel.COLUNA_VALOR_TOTAL, pedido.getValorTotal());
-        valores.put(PedidoModel.COLUNA_COMISSAO, pedido.getComissao());
-        valores.put(PedidoModel.COLUNA_STATUS, pedido.getStatus());
-
-        return escreve.insert(PedidoModel.TABELA_PEDIDOS, null, valores);
-    }
-
-    // Listar pedidos com nome do cliente (usando JOIN)
-    public List<String> listarPedidosComNomePorCliente(int userId) {
+    public List<String> listarRepresentantesComPedidos(Context context) {
         List<String> lista = new ArrayList<>();
 
-        String query = "SELECT p.*, u.nome " +
+        String query = "SELECT DISTINCT r.id, r.nome " +
                 "FROM " + PedidoModel.TABELA_PEDIDOS + " p " +
-                "JOIN usuarios u ON p." + PedidoModel.COLUNA_USER_ID + " = u.id " +
-                "WHERE p." + PedidoModel.COLUNA_USER_ID + " = ?";
+                "JOIN " + CadastroModel.TABELA_CADASTRO + " r ON p." + PedidoModel.COLUNA_REPRESENTANTE_ID + " = r.id " +
+                "ORDER BY r.nome ASC";
 
-        Cursor cursor = le.rawQuery(query, new String[]{String.valueOf(userId)});
+        Cursor cursor = le.rawQuery(query, null);
 
         if (cursor != null && cursor.moveToFirst()) {
             do {
-                String nomeCliente = cursor.getString(cursor.getColumnIndexOrThrow("nome"));
-                double valorTotal = cursor.getDouble(cursor.getColumnIndexOrThrow(PedidoModel.COLUNA_VALOR_TOTAL));
-                double comissao = cursor.getDouble(cursor.getColumnIndexOrThrow(PedidoModel.COLUNA_COMISSAO));
-                String status = cursor.getString(cursor.getColumnIndexOrThrow(PedidoModel.COLUNA_STATUS));
-
-                String resultado = "Cliente: " + nomeCliente + "\n" +
-                        "Valor: R$ " + valorTotal + "\n" +
-                        "Comissão: R$ " + comissao + "\n" +
-                        "Status: " + status;
-
-                lista.add(resultado);
+                int id = cursor.getInt(cursor.getColumnIndexOrThrow("id"));
+                String nome = cursor.getString(cursor.getColumnIndexOrThrow("nome"));
+                lista.add(id + " - " + nome);
             } while (cursor.moveToNext());
         }
 
         if (cursor != null) cursor.close();
         return lista;
     }
+
 
 
 }

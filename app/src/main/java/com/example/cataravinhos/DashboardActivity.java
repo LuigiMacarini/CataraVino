@@ -22,13 +22,11 @@ public class DashboardActivity extends AppCompatActivity {
         btnRoteirizador = findViewById(R.id.btnRoteirizador);
         btnConsultaPedidos = findViewById(R.id.btnConsultaPedidos);
         btnComissoes = findViewById(R.id.btnComissoes);
-
-        // Atualizado: redirecionar para ListaClientesActivity
         btnCadastroClientes.setOnClickListener(v -> abrirTela(ListaClientesActivity.class));
         btnProdutos.setOnClickListener(v -> abrirTela(ListaVinhosActivity.class));
         btnPedidos.setOnClickListener(v -> abrirTela(CadastroPedidoActivity.class));
         btnConsultaPedidos.setOnClickListener(v -> abrirTela(ConsultaPedidoActivity.class));
-        // Outros botões podem ser configurados aqui também
+        btnComissoes.setOnClickListener(v -> abrirTela(ConsultaComissaoActivity.class));
     }
 
     private void abrirTela(Class<?> activityClass) {

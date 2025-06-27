@@ -16,7 +16,7 @@ public class CadastroModel {
 
     // Constantes para os tipos de perfil
     public static final String PERFIL_USER = "user";
-    public static final String PERFIL_ADMIN = "layout/admin";
+    public static final String PERFIL_ADMIN = "admin";
     public static final String PERFIL_REPRESENTANTE = "representante";
 
     public static final String CREATE_TABLE =

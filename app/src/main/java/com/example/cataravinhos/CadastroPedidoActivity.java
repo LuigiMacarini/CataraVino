@@ -22,6 +22,9 @@ public class CadastroPedidoActivity extends AppCompatActivity {
     private EditText etValorTotal, etComissao, etStatus;
     private Button btnSalvarPedido, btnListarPedidos;
 
+    private String idClienteSelecionado;
+    private String idRepresentanteSelecionado;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -58,8 +61,11 @@ public class CadastroPedidoActivity extends AppCompatActivity {
         etClienteId.setAdapter(adapterClientes);
         etClienteId.setOnItemClickListener((parent, view, position, id) -> {
             String selecionado = (String) parent.getItemAtPosition(position);
-            String idCliente = selecionado.split(" - ")[0].trim();
-            etClienteId.setText(idCliente);
+            String[] partes = selecionado.split(" - ", 2);
+            if (partes.length == 2) {
+                idClienteSelecionado = partes[0].trim();
+                etClienteId.setText(partes[1].trim());
+            }
         });
     }
 
@@ -75,16 +81,24 @@ public class CadastroPedidoActivity extends AppCompatActivity {
         etRepresentanteId.setAdapter(adapterRepresentantes);
         etRepresentanteId.setOnItemClickListener((parent, view, position, id) -> {
             String selecionado = (String) parent.getItemAtPosition(position);
-            String idRep = selecionado.split(" - ")[0].trim();
-            etRepresentanteId.setText(idRep);
+            String[] partes = selecionado.split(" - ", 2);
+            if (partes.length == 2) {
+                idRepresentanteSelecionado = partes[0].trim();
+                etRepresentanteId.setText(partes[1].trim());
+            }
         });
     }
 
     private void salvarPedido() {
         try {
+            if (idClienteSelecionado == null || idRepresentanteSelecionado == null) {
+                Toast.makeText(this, "Selecione um cliente e um representante da lista.", Toast.LENGTH_SHORT).show();
+                return;
+            }
+
             PedidoModel pedido = new PedidoModel();
-            pedido.setUserId(Integer.parseInt(etClienteId.getText().toString()));
-            pedido.setRepresentanteId(Integer.parseInt(etRepresentanteId.getText().toString()));
+            pedido.setUserId(Integer.parseInt(idClienteSelecionado));
+            pedido.setRepresentanteId(Integer.parseInt(idRepresentanteSelecionado));
             pedido.setValorTotal(Double.parseDouble(etValorTotal.getText().toString()));
             pedido.setComissao(Double.parseDouble(etComissao.getText().toString()));
             pedido.setStatus(etStatus.getText().toString().toUpperCase());
@@ -110,6 +124,8 @@ public class CadastroPedidoActivity extends AppCompatActivity {
         etValorTotal.setText("");
         etComissao.setText("");
         etStatus.setText("");
+        idClienteSelecionado = null;
+        idRepresentanteSelecionado = null;
     }
 
     private void mostrarPedidos() {

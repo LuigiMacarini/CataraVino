@@ -90,11 +90,14 @@ public class DBOpenHelper extends SQLiteOpenHelper {
         List<String> lista = new ArrayList<>();
         SQLiteDatabase db = this.getReadableDatabase();
 
-        String[] colunas = {CadastroModel.COLUNA_ID, CadastroModel.COLUNA_NOME};
-        String selecao = CadastroModel.COLUNA_PERFIL + " = ?";
-        String[] args = {perfil};
-
-        Cursor cursor = db.query(CadastroModel.TABELA_CADASTRO, colunas, selecao, args, null, null, CadastroModel.COLUNA_NOME + " ASC");
+        Cursor cursor = db.query(
+                CadastroModel.TABELA_CADASTRO,
+                new String[]{CadastroModel.COLUNA_ID, CadastroModel.COLUNA_NOME},
+                CadastroModel.COLUNA_PERFIL + " = ?",
+                new String[]{perfil},
+                null, null,
+                CadastroModel.COLUNA_NOME + " ASC"
+        );
 
         if (cursor.moveToFirst()) {
             do {
@@ -109,4 +112,5 @@ public class DBOpenHelper extends SQLiteOpenHelper {
 
         return lista;
     }
+
 }
