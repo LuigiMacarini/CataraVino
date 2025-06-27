@@ -27,20 +27,20 @@ public class Home extends AppCompatActivity {
         cartButton = findViewById(R.id.cartButton);
         saibaMaisButton = findViewById(R.id.saibaMaisButton);
 
-        // Configure menu button click
+
         menuButton.setOnClickListener(v -> {
             drawerLayout.openDrawer(navigationView);
         });
 
-        // Configure navigation item selection (SINGLE LISTENER)
+
         navigationView.setNavigationItemSelectedListener(item -> {
             int id = item.getItemId();
 
             if (id == R.id.nav_wines) {
-                startActivity(new Intent(this, WinesActivity.class));
+                startActivity(new Intent(this, CatalogoActivity.class));
             }
             else if (id == R.id.nav_genres) {
-                startActivity(new Intent(this, GenresActivity.class));
+                startActivity(new Intent(this, CatalogoActivity.class));
             }
             else if (id == R.id.nav_contact) {
                 startActivity(new Intent(this, ContactActivity.class));
