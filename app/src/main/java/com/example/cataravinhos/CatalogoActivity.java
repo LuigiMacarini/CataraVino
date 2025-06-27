@@ -1,11 +1,15 @@
+// Atualizado CatalogoActivity.java com filtro por tipo
 package com.example.cataravinhos;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.Gravity;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -20,13 +24,15 @@ import com.example.cataravinhos.model.VinhoModel;
 import com.google.android.material.navigation.NavigationView;
 
 import java.io.File;
+import java.util.ArrayList;
 import java.util.List;
 
 public class CatalogoActivity extends AppCompatActivity {
 
     private DrawerLayout drawerLayout;
     private NavigationView navigationView;
-    private ImageButton menuButton, cartButton;
+    private ImageButton menuButton, cartButton, filterButton;
+    private List<VinhoModel> todosVinhos;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +43,7 @@ public class CatalogoActivity extends AppCompatActivity {
         navigationView = findViewById(R.id.nav_view);
         menuButton = findViewById(R.id.menuButton);
         cartButton = findViewById(R.id.cartButton);
+        filterButton = findViewById(R.id.filterButton);
 
         menuButton.setOnClickListener(v -> drawerLayout.openDrawer(GravityCompat.START));
         cartButton.setOnClickListener(v -> startActivity(new Intent(this, CartActivity.class)));
@@ -54,13 +61,40 @@ public class CatalogoActivity extends AppCompatActivity {
             return true;
         });
 
+        filterButton.setOnClickListener(v -> abrirDialogoFiltro());
+
         carregarVinhosDoBanco();
+        exibirVinhos(todosVinhos);
+    }
+
+    private void abrirDialogoFiltro() {
+        String[] tipos = {"Todos", "Tinto", "Branco", "Rosé", "Espumante"};
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("Filtrar por tipo")
+                .setItems(tipos, (dialog, which) -> {
+                    String tipoSelecionado = tipos[which];
+                    if (tipoSelecionado.equals("Todos")) {
+                        exibirVinhos(todosVinhos);
+                    } else {
+                        List<VinhoModel> filtrados = new ArrayList<>();
+                        for (VinhoModel vinho : todosVinhos) {
+                            if (vinho.getTipo().equalsIgnoreCase(tipoSelecionado)) {
+                                filtrados.add(vinho);
+                            }
+                        }
+                        exibirVinhos(filtrados);
+                    }
+                })
+                .show();
     }
 
     private void carregarVinhosDoBanco() {
         VinhoDAO vinhoDAO = new VinhoDAO(this);
-        List<VinhoModel> listaVinhos = vinhoDAO.listarVinhos();
+        todosVinhos = vinhoDAO.listarVinhos();
+    }
 
+    private void exibirVinhos(List<VinhoModel> listaVinhos) {
         LinearLayout container = findViewById(R.id.containerVinhos);
         container.removeAllViews();
 
@@ -97,7 +131,6 @@ public class CatalogoActivity extends AppCompatActivity {
             card.setPadding(8, 8, 8, 8);
             card.setElevation(4f);
 
-            // Imagem
             ImageView imagem = new ImageView(this);
             imagem.setLayoutParams(new LinearLayout.LayoutParams(
                     LinearLayout.LayoutParams.MATCH_PARENT,
@@ -115,32 +148,27 @@ public class CatalogoActivity extends AppCompatActivity {
                 imagem.setImageResource(R.drawable.vinho);
             }
 
-            // Nome
             TextView nome = new TextView(this);
             nome.setText(vinho.getNome());
             nome.setGravity(Gravity.CENTER);
             nome.setTypeface(null, Typeface.BOLD);
             nome.setPadding(0, 8, 0, 0);
 
-            // Safra e Tipo
             TextView safraTipo = new TextView(this);
             safraTipo.setText("Safra " + vinho.getSafra() + "\n" + vinho.getTipo());
             safraTipo.setGravity(Gravity.CENTER);
 
-            // Preço (exemplo fixo, pois não tem no modelo)
             TextView preco = new TextView(this);
-            preco.setText("R$ 750"); // Adicione campo 'preco' se desejar
+            preco.setText("R$ 750");
             preco.setGravity(Gravity.CENTER);
             preco.setTypeface(null, Typeface.BOLD);
             preco.setPadding(0, 4, 0, 0);
 
-            // Adiciona ao card
             card.addView(imagem);
             card.addView(nome);
             card.addView(safraTipo);
             card.addView(preco);
 
-            // Adiciona ação de clique
             card.setOnClickListener(v -> abrirDetalhes(
                     vinho.getNome(),
                     vinho.getSafra(),
@@ -162,7 +190,7 @@ public class CatalogoActivity extends AppCompatActivity {
         intent.putExtra("tipo", tipo);
         intent.putExtra("notas", notas);
         intent.putExtra("harmonizacoes", harmonizacoes);
-        intent.putExtra("imagemPath", imagemPath); // novo
+        intent.putExtra("imagemPath", imagemPath);
         startActivity(intent);
     }
 }
