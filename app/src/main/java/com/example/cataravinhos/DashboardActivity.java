@@ -8,7 +8,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class DashboardActivity extends AppCompatActivity {
 
-    Button btnCadastroClientes, btnConsultaClientes, btnProdutos,
+    Button btnCadastroClientes, btnProdutos,
             btnPedidos, btnRoteirizador, btnConsultaPedidos, btnComissoes;
 
     @Override
@@ -17,7 +17,6 @@ public class DashboardActivity extends AppCompatActivity {
         setContentView(R.layout.activity_dashboard);
 
         btnCadastroClientes = findViewById(R.id.btnCadastroClientes);
-        btnConsultaClientes = findViewById(R.id.btnConsultaClientes);
         btnProdutos = findViewById(R.id.btnProdutos);
         btnPedidos = findViewById(R.id.btnPedidos);
         btnRoteirizador = findViewById(R.id.btnRoteirizador);
@@ -28,6 +27,7 @@ public class DashboardActivity extends AppCompatActivity {
         btnCadastroClientes.setOnClickListener(v -> abrirTela(ListaClientesActivity.class));
         btnProdutos.setOnClickListener(v -> abrirTela(ListaVinhosActivity.class));
         btnPedidos.setOnClickListener(v -> abrirTela(CadastroPedidoActivity.class));
+        btnConsultaPedidos.setOnClickListener(v -> abrirTela(ConsultaPedidoActivity.class));
         // Outros botões podem ser configurados aqui também
     }
 

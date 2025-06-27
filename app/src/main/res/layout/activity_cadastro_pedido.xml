@@ -10,10 +10,12 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <EditText
+        <AutoCompleteTextView
             android:id="@+id/etClienteId"
-            android:hint="ID do Cliente"
-            android:inputType="number"
+            android:hint="Selecione o Cliente"
+            android:inputType="none"
+            android:focusable="true"
+            android:clickable="true"
             android:textColor="#000000"
             android:background="@drawable/edit_text_background"
             android:padding="12dp"
@@ -21,10 +23,12 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
-        <EditText
+        <AutoCompleteTextView
             android:id="@+id/etRepresentanteId"
-            android:hint="ID do Representante"
-            android:inputType="number"
+            android:hint="Selecione o Representante"
+            android:inputType="none"
+            android:focusable="true"
+            android:clickable="true"
             android:textColor="#000000"
             android:background="@drawable/edit_text_background"
             android:padding="12dp"

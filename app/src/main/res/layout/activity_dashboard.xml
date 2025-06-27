@@ -18,14 +18,6 @@
         android:layout_margin="8dp"
         android:text="Cadastro de Clientes" />
 
-    <Button
-        android:id="@+id/btnConsultaClientes"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_columnWeight="1"
-        android:layout_rowWeight="1"
-        android:layout_margin="8dp"
-        android:text="Consultar Clientes" />
 
     <Button
         android:id="@+id/btnProdutos"

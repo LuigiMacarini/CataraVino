@@ -172,4 +172,36 @@ public class PedidoDAO {
         return escreve.insert(PedidoModel.TABELA_PEDIDOS, null, valores);
     }
 
+    // Listar pedidos com nome do cliente (usando JOIN)
+    public List<String> listarPedidosComNomePorCliente(int userId) {
+        List<String> lista = new ArrayList<>();
+
+        String query = "SELECT p.*, u.nome " +
+                "FROM " + PedidoModel.TABELA_PEDIDOS + " p " +
+                "JOIN usuarios u ON p." + PedidoModel.COLUNA_USER_ID + " = u.id " +
+                "WHERE p." + PedidoModel.COLUNA_USER_ID + " = ?";
+
+        Cursor cursor = le.rawQuery(query, new String[]{String.valueOf(userId)});
+
+        if (cursor != null && cursor.moveToFirst()) {
+            do {
+                String nomeCliente = cursor.getString(cursor.getColumnIndexOrThrow("nome"));
+                double valorTotal = cursor.getDouble(cursor.getColumnIndexOrThrow(PedidoModel.COLUNA_VALOR_TOTAL));
+                double comissao = cursor.getDouble(cursor.getColumnIndexOrThrow(PedidoModel.COLUNA_COMISSAO));
+                String status = cursor.getString(cursor.getColumnIndexOrThrow(PedidoModel.COLUNA_STATUS));
+
+                String resultado = "Cliente: " + nomeCliente + "\n" +
+                        "Valor: R$ " + valorTotal + "\n" +
+                        "Comissão: R$ " + comissao + "\n" +
+                        "Status: " + status;
+
+                lista.add(resultado);
+            } while (cursor.moveToNext());
+        }
+
+        if (cursor != null) cursor.close();
+        return lista;
+    }
+
+
 }
