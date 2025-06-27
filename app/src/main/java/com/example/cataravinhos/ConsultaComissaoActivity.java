@@ -21,7 +21,7 @@ public class ActivityComissao extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_relatorio_comissoes);
+        setContentView(R.layout.activity_consulta_comissoes);
 
         editDataInicio = findViewById(R.id.editDataInicio);
         editDataFim = findViewById(R.id.editDataFim);
