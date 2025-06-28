@@ -7,60 +7,36 @@
     android:columnCount="2"
     android:rowCount="4"
     android:padding="16dp"
-    android:background="#FAFAFA">
+    android:background="#EFE0D1">
 
     <Button
         android:id="@+id/btnCadastroClientes"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_columnWeight="1"
-        android:layout_rowWeight="1"
-        android:layout_margin="8dp"
+        style="@style/EstiloBotaoDashboard"
         android:text="Cadastro de Clientes" />
-
 
     <Button
         android:id="@+id/btnProdutos"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_columnWeight="1"
-        android:layout_rowWeight="1"
-        android:layout_margin="8dp"
+        style="@style/EstiloBotaoDashboard"
         android:text="Produtos" />
 
     <Button
         android:id="@+id/btnPedidos"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_columnWeight="1"
-        android:layout_rowWeight="1"
-        android:layout_margin="8dp"
+        style="@style/EstiloBotaoDashboard"
         android:text="Emissão de Pedidos" />
 
     <Button
         android:id="@+id/btnRoteirizador"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_columnWeight="1"
-        android:layout_rowWeight="1"
-        android:layout_margin="8dp"
+        style="@style/EstiloBotaoDashboard"
         android:text="Roteirizador" />
 
     <Button
         android:id="@+id/btnConsultaPedidos"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_columnWeight="1"
-        android:layout_rowWeight="1"
-        android:layout_margin="8dp"
+        style="@style/EstiloBotaoDashboard"
         android:text="Pedidos por Cliente" />
 
     <Button
         android:id="@+id/btnComissoes"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_columnWeight="1"
-        android:layout_rowWeight="1"
-        android:layout_margin="8dp"
+        style="@style/EstiloBotaoDashboard"
         android:text="Metas e Comissões" />
+
 </GridLayout>

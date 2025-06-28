@@ -11,7 +11,7 @@
         android:background="@color/background"
         android:padding="20dp">
 
-        <!-- Título -->
+        <!-- Titulo -->
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -22,7 +22,7 @@
             android:gravity="center"
             android:layout_marginBottom="20dp" />
 
-        <!-- Campos de entrada -->
+        <!-- Campo entrada -->
         <EditText
             android:id="@+id/edtNome"
             android:layout_width="match_parent"
@@ -93,7 +93,7 @@
             android:padding="12dp"
             android:background="@drawable/edittext_border" />
 
-        <!-- Spinner para Perfil -->
+        <!-- Spinner Perfil -->
 
         <TextView
             android:layout_width="match_parent"
@@ -103,7 +103,7 @@
             android:textColor="#333333"
             android:textSize="16sp" />
 
-        <!-- Botões -->
+        <!-- btn -->
 
         <Spinner
             android:id="@+id/spinnerPerfil"
@@ -133,7 +133,7 @@
             android:backgroundTint="@color/black"
             android:layout_marginBottom="20dp" />
 
-        <!-- Área de resultado -->
+        <!--  resultado -->
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -156,7 +156,7 @@
             android:gravity="top"
             android:scrollbars="vertical" />
 
-        <!-- Legenda -->
+        <!-- subtitulo -->
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

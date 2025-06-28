@@ -6,7 +6,7 @@
     android:padding="16dp"
     android:background="#EFE0D1">
 
-    <!-- Campo de busca -->
+    <!-- Campo busca -->
     <EditText
         android:id="@+id/editPesquisaVinho"
         android:layout_width="match_parent"
@@ -18,7 +18,7 @@
         android:background="@drawable/edittext_background"
         android:layout_marginBottom="12dp"/>
 
-    <!-- RecyclerView para listar vinhos -->
+    <!-- recycler list vinhos -->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerViewListaVinhos"
         android:layout_width="match_parent"
@@ -26,7 +26,7 @@
         android:layout_weight="1"
         android:clipToPadding="false" />
 
-    <!-- Botão para cadastrar novo vinho -->
+    <!-- btn cadastrar vinho -->
     <Button
         android:id="@+id/btnCadastrarNovoVinho"
         android:layout_width="match_parent"

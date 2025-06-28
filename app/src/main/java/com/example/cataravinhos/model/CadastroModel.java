@@ -97,7 +97,7 @@ public class CadastroModel {
         this.perfil = perfil != null ? perfil : PERFIL_USER;
     }
 
-    // Métodos auxiliares para verificar perfil
+    //verificar perfil
     public boolean isAdmin() {
         return PERFIL_ADMIN.equals(this.perfil);
     }

@@ -24,7 +24,7 @@ public class DBOpenHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        // Criação de todas as tabelas
+        //tabelas
         db.execSQL(CadastroModel.CREATE_TABLE);
         db.execSQL(VinhoModel.CREATE_TABLE);
         db.execSQL(PedidoModel.CREATE_TABLE);
@@ -33,7 +33,7 @@ public class DBOpenHelper extends SQLiteOpenHelper {
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        // Atualizações incrementais por versão
+        // Atualizações versão
         if (oldVersion < 4) {
             try {
                 db.execSQL("ALTER TABLE " + CadastroModel.TABELA_CADASTRO +

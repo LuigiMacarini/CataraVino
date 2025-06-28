@@ -32,7 +32,7 @@ public class ListaClientesActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_lista_clientes); // Esse é o nome do seu XML
+        setContentView(R.layout.activity_lista_clientes);
 
         edtBuscarCliente = findViewById(R.id.edtBuscarCliente);
         listViewClientes = findViewById(R.id.listViewClientes);
@@ -43,7 +43,7 @@ public class ListaClientesActivity extends AppCompatActivity {
 
         carregarClientes("");
 
-        // Filtro em tempo real
+        // Filtro
         edtBuscarCliente.addTextChangedListener(new TextWatcher() {
             @Override public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
             @Override public void afterTextChanged(Editable s) {}
@@ -54,7 +54,7 @@ public class ListaClientesActivity extends AppCompatActivity {
             }
         });
 
-        // Navegar para tela de cadastro
+        // nav cadastro
         btnNovoCliente.setOnClickListener(v -> {
             Intent intent = new Intent(ListaClientesActivity.this, CadastroActivity.class);
             startActivity(intent);

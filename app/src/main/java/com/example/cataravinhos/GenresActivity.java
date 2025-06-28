@@ -12,3 +12,5 @@ public class GenresActivity extends AppCompatActivity {
         setContentView(R.layout.activity_catalogo);
     }
 }
+
+//sem uso

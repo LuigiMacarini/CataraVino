@@ -40,7 +40,6 @@ public class PedidoModel {
         this.status = status;
     }
 
-    // Getters e Setters
     public int getId() {
         return id;
     }

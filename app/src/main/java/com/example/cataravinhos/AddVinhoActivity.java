@@ -49,7 +49,7 @@ public class AddVinhoActivity extends AppCompatActivity {
 
         vinhoDAO = new VinhoDAO(this);
 
-        // Registra o launcher para a galeria
+        //launcher galeria
         galeriaLauncher = registerForActivityResult(
                 new ActivityResultContracts.StartActivityForResult(),
                 result -> {
@@ -72,6 +72,11 @@ public class AddVinhoActivity extends AppCompatActivity {
         btnSalvar.setOnClickListener(v -> salvarVinho());
 
         btnApagar.setOnClickListener(v -> apagarVinho());
+        Button btnIrCatalogo = findViewById(R.id.btnIrCatalogo);
+        btnIrCatalogo.setOnClickListener(v -> {
+            Intent intent = new Intent(AddVinhoActivity.this, CatalogoActivity.class);
+            startActivity(intent);
+        });
 
         listarVinhos();
     }

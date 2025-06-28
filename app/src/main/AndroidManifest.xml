@@ -40,6 +40,7 @@
         <activity android:name=".ListaClientesActivity"/>
         <activity android:name=".ConsultaComissaoActivity"/>
         <activity android:name=".ListaVinhosActivity"/>
+        <activity android:name=".DetalhesVinhoActivity"/>
 
 
     </application>

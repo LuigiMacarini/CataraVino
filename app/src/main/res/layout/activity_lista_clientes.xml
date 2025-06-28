@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:layout_marginTop="20dp">
 
-    <!-- Campo de busca -->
+    <!-- Campo busca -->
     <EditText
         android:id="@+id/edtBuscarCliente"
         android:layout_width="match_parent"
@@ -16,7 +16,7 @@
         android:padding="10dp"
         android:background="@android:drawable/editbox_background" />
 
-    <!-- Lista de clientes -->
+    <!-- Lista clientes -->
     <ListView
         android:id="@+id/listViewClientes"
         android:layout_width="match_parent"
@@ -24,7 +24,7 @@
         android:layout_weight="1"
         android:dividerHeight="1dp" />
 
-    <!-- Botão para cadastrar novo cliente -->
+    <!-- btn cadastro cliente -->
     <Button
         android:id="@+id/btnNovoCliente"
         android:layout_width="match_parent"

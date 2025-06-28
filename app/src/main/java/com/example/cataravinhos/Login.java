@@ -50,7 +50,7 @@ public class Login extends AppCompatActivity {
                     // Vai para Home se for usuário comum
                     intent = new Intent(Login.this, Home.class);
                 } else {
-                    // Caso o perfil não bata com nenhum, pode ir para Home por segurança
+
                     intent = new Intent(Login.this, Home.class);
                 }
 

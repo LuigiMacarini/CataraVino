@@ -49,7 +49,7 @@ public class PedidoDAO {
         }
     }
 
-    // Buscar todos os pedidos (sem filtro)
+    // Buscar todos os pedidos
     public List<PedidoModel> listarPedidos() {
         List<PedidoModel> lista = new ArrayList<>();
 
