@@ -12,3 +12,4 @@ public class WinesActivity extends AppCompatActivity {
         setContentView(R.layout.activity_catalogo);
     }
 }
+//sem uso

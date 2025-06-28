@@ -125,7 +125,7 @@ public class CadastroActivity extends AppCompatActivity {
         String senha = edtSenha.getText().toString();
         String perfil = spinnerPerfil.getSelectedItem().toString();
 
-        // Validações básicas
+        // Validação básica
         if (nome.isEmpty() || cpfCnpj.isEmpty() || email.isEmpty() || senha.isEmpty()) {
             Toast.makeText(this, "Preencha os campos obrigatórios!", Toast.LENGTH_SHORT).show();
             return;
@@ -157,7 +157,7 @@ public class CadastroActivity extends AppCompatActivity {
             );
             Toast.makeText(this, "Cadastro realizado com sucesso!", Toast.LENGTH_SHORT).show();
 
-            // Limpar campos
+            // Limpa campo
             limparCampos();
 
             db.close();
@@ -176,6 +176,6 @@ public class CadastroActivity extends AppCompatActivity {
         edtContato.setText("");
         edtEmail.setText("");
         edtSenha.setText("");
-        spinnerPerfil.setSelection(0); // Volta para o primeiro item (user)
+        spinnerPerfil.setSelection(0); // Volta para o primeiro item
     }
 }

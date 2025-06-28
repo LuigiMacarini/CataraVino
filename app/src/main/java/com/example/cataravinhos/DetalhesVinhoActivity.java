@@ -35,7 +35,6 @@ public class DetalhesVinhoActivity extends AppCompatActivity {
         TextView harmonizacoesView = findViewById(R.id.harmonizacoes);
         Button btnVoltar = findViewById(R.id.btnVoltar);
 
-        // Define a imagem: local ou drawable padrão
         if (imagemPath != null && !imagemPath.isEmpty()) {
             File imgFile = new File(imagemPath);
             if (imgFile.exists()) {

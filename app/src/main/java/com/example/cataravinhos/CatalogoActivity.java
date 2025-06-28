@@ -39,7 +39,7 @@ public class CatalogoActivity extends AppCompatActivity {
         cartButton = findViewById(R.id.cartButton);
 
         menuButton.setOnClickListener(v -> drawerLayout.openDrawer(GravityCompat.START));
-        cartButton.setOnClickListener(v -> startActivity(new Intent(this, CartActivity.class)));
+        cartButton.setOnClickListener(v -> startActivity(new Intent(this, Home.class)));
 
         navigationView.setNavigationItemSelectedListener(item -> {
             int id = item.getItemId();
@@ -127,7 +127,7 @@ public class CatalogoActivity extends AppCompatActivity {
             safraTipo.setText("Safra " + vinho.getSafra() + "\n" + vinho.getTipo());
             safraTipo.setGravity(Gravity.CENTER);
 
-            // Preço (exemplo fixo, pois não tem no modelo)
+            // Preço
             TextView preco = new TextView(this);
             preco.setText("R$ 750"); // Adicione campo 'preco' se desejar
             preco.setGravity(Gravity.CENTER);
@@ -140,7 +140,6 @@ public class CatalogoActivity extends AppCompatActivity {
             card.addView(safraTipo);
             card.addView(preco);
 
-            // Adiciona ação de clique
             card.setOnClickListener(v -> abrirDetalhes(
                     vinho.getNome(),
                     vinho.getSafra(),

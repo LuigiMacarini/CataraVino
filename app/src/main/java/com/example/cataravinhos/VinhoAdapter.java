@@ -19,7 +19,7 @@ import java.util.List;
 public class VinhoAdapter extends RecyclerView.Adapter<VinhoAdapter.VinhoViewHolder> {
     private Context context;
     private List<VinhoModel> vinhos;
-
+//componente pro add vinho
     public VinhoAdapter(Context context, List<VinhoModel> vinhos) {
         this.context = context;
         this.vinhos = vinhos;
@@ -72,5 +72,12 @@ public class VinhoAdapter extends RecyclerView.Adapter<VinhoAdapter.VinhoViewHol
             textViewInfo = itemView.findViewById(R.id.textViewInfoVinho);
         }
     }
+
+    public void atualizarLista(List<VinhoModel> novaLista) {
+        this.vinhos.clear();
+        this.vinhos.addAll(novaLista);
+        notifyDataSetChanged();
+    }
+
 }
 

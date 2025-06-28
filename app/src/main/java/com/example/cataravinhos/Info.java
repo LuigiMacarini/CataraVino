@@ -12,3 +12,4 @@ public class Info extends AppCompatActivity {
         setContentView(R.layout.activity_historia);
     }
 }
+//sem uso

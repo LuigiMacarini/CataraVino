@@ -41,7 +41,19 @@ public class Login extends AppCompatActivity {
             CadastroModel cliente = cadastroDAO.autenticar(email, senha);
             if (cliente != null) {
                 Toast.makeText(this, "Bem-vindo, " + cliente.getNome(), Toast.LENGTH_SHORT).show();
-                Intent intent = new Intent(Login.this, Home.class);
+
+                Intent intent;
+                if (cliente.isAdmin() || cliente.isRepresentante()) {
+                    // Vai para DashboardActivity se for admin ou representante
+                    intent = new Intent(Login.this, DashboardActivity.class);
+                } else if (cliente.isUser()) {
+                    // Vai para Home se for usuário comum
+                    intent = new Intent(Login.this, Home.class);
+                } else {
+
+                    intent = new Intent(Login.this, Home.class);
+                }
+
                 startActivity(intent);
                 finish();
             } else {

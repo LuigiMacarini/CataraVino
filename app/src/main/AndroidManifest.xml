@@ -16,7 +16,7 @@
 
 
         <activity
-            android:name=".Home"
+            android:name=".DashboardActivity"
             android:exported="true"
             tools:ignore="MissingClass">
             <intent-filter>
@@ -25,20 +25,22 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".Login" />
-        <activity android:name=".AddVinhoActivity" />
-        <activity android:name=".CadastroActivity" />
-        <activity android:name=".CatalogoActivity"/>
-        <activity android:name=".DetalhesVinhoActivity"/>
-        <activity android:name=".GenresActivity"/>
         <activity android:name=".Historia"/>
+        <activity android:name=".WinesActivity" />
+        <activity android:name=".GenresActivity" />
+        <activity android:name=".ContactActivity" />
+        <activity android:name=".Info" />
+        <activity android:name=".CartActivity" />
+        <activity android:name=".Home" />
+        <activity android:name=".AddVinhoActivity"/>
+        <activity android:name=".CatalogoActivity"/>
+        <activity android:name=".CadastroActivity"/>
         <activity android:name=".CadastroPedidoActivity"/>
-        <activity android:name=".WinesActivity"/>
-        <activity android:name=".ContactActivity"/>
-        <activity android:name=".Info"/>
-        <activity android:name=".CartActivity"/>
-
-
+        <activity android:name=".ConsultaPedidoActivity"/>
+        <activity android:name=".ListaClientesActivity"/>
+        <activity android:name=".ConsultaComissaoActivity"/>
+        <activity android:name=".ListaVinhosActivity"/>
+        <activity android:name=".DetalhesVinhoActivity"/>
 
 
     </application>

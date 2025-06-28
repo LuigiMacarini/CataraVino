@@ -6,6 +6,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
 import com.example.cataravinhos.helper.DBOpenHelper;
+import com.example.cataravinhos.model.CadastroModel;
 import com.example.cataravinhos.model.PedidoModel;
 
 import java.util.ArrayList;
@@ -23,7 +24,8 @@ public class PedidoDAO {
     }
 
     // Salvar novo pedido
-    public boolean salvar(PedidoModel pedido) {
+    // No PedidoDAO.java
+    public long salvar(PedidoModel pedido) {
         ContentValues valores = new ContentValues();
         valores.put(PedidoModel.COLUNA_USER_ID, pedido.getUserId());
         valores.put(PedidoModel.COLUNA_REPRESENTANTE_ID, pedido.getRepresentanteId());
@@ -32,13 +34,54 @@ public class PedidoDAO {
         valores.put(PedidoModel.COLUNA_STATUS, pedido.getStatus());
 
         try {
-            escreve.insert(PedidoModel.TABELA_PEDIDOS, null, valores);
-            return true;
+            long idPedido = escreve.insert(PedidoModel.TABELA_PEDIDOS, null, valores);
+
+            if (idPedido != -1) {
+                // Você pode incluir aqui a lógica para salvar comissão, se quiser
+                return idPedido;
+            } else {
+                return -1;
+            }
+
         } catch (Exception e) {
             e.printStackTrace();
-            return false;
+            return -1;
         }
     }
+
+    // Buscar todos os pedidos
+    public List<PedidoModel> listarPedidos() {
+        List<PedidoModel> lista = new ArrayList<>();
+
+        Cursor cursor = le.query(
+                PedidoModel.TABELA_PEDIDOS,
+                null,       // todas as colunas
+                null,       // sem cláusula WHERE
+                null,
+                null,
+                null,
+                null
+        );
+
+        if (cursor != null && cursor.moveToFirst()) {
+            do {
+                PedidoModel pedido = new PedidoModel();
+                pedido.setId(cursor.getInt(cursor.getColumnIndexOrThrow(PedidoModel.COLUNA_ID)));
+                pedido.setUserId(cursor.getInt(cursor.getColumnIndexOrThrow(PedidoModel.COLUNA_USER_ID)));
+                pedido.setRepresentanteId(cursor.getInt(cursor.getColumnIndexOrThrow(PedidoModel.COLUNA_REPRESENTANTE_ID)));
+                pedido.setValorTotal(cursor.getDouble(cursor.getColumnIndexOrThrow(PedidoModel.COLUNA_VALOR_TOTAL)));
+                pedido.setComissao(cursor.getDouble(cursor.getColumnIndexOrThrow(PedidoModel.COLUNA_COMISSAO)));
+                pedido.setStatus(cursor.getString(cursor.getColumnIndexOrThrow(PedidoModel.COLUNA_STATUS)));
+
+                lista.add(pedido);
+            } while (cursor.moveToNext());
+        }
+
+        if (cursor != null) cursor.close();
+        return lista;
+    }
+
+
 
     // Buscar todos os pedidos de um representante
     public List<PedidoModel> listarPorRepresentante(int representanteId) {
@@ -119,15 +162,28 @@ public class PedidoDAO {
         return lista;
     }
 
-    public long inserirPedido(PedidoModel pedido) {
-        ContentValues valores = new ContentValues();
-        valores.put(PedidoModel.COLUNA_USER_ID, pedido.getUserId());
-        valores.put(PedidoModel.COLUNA_REPRESENTANTE_ID, pedido.getRepresentanteId());
-        valores.put(PedidoModel.COLUNA_VALOR_TOTAL, pedido.getValorTotal());
-        valores.put(PedidoModel.COLUNA_COMISSAO, pedido.getComissao());
-        valores.put(PedidoModel.COLUNA_STATUS, pedido.getStatus());
+    public List<String> listarRepresentantesComPedidos(Context context) {
+        List<String> lista = new ArrayList<>();
 
-        return escreve.insert(PedidoModel.TABELA_PEDIDOS, null, valores);
+        String query = "SELECT DISTINCT r.id, r.nome " +
+                "FROM " + PedidoModel.TABELA_PEDIDOS + " p " +
+                "JOIN " + CadastroModel.TABELA_CADASTRO + " r ON p." + PedidoModel.COLUNA_REPRESENTANTE_ID + " = r.id " +
+                "ORDER BY r.nome ASC";
+
+        Cursor cursor = le.rawQuery(query, null);
+
+        if (cursor != null && cursor.moveToFirst()) {
+            do {
+                int id = cursor.getInt(cursor.getColumnIndexOrThrow("id"));
+                String nome = cursor.getString(cursor.getColumnIndexOrThrow("nome"));
+                lista.add(id + " - " + nome);
+            } while (cursor.moveToNext());
+        }
+
+        if (cursor != null) cursor.close();
+        return lista;
     }
+
+
 
 }

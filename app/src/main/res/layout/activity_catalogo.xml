@@ -67,8 +67,10 @@
 
                 <ImageButton
                     android:id="@+id/cartButton"
-                    android:layout_width="48dp"
-                    android:layout_height="48dp"
+                    android:layout_width="38dp"
+                    android:layout_height="38dp"
+                    android:src="@drawable/house"
+                    android:scaleType="centerInside"
                     android:background="?attr/selectableItemBackgroundBorderless"
                     android:contentDescription="Carrinho" />
             </LinearLayout>

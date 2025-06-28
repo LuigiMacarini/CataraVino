@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/gridDashboard"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:alignmentMode="alignMargins"
+    android:columnCount="2"
+    android:rowCount="4"
+    android:padding="16dp"
+    android:background="#EFE0D1">
+
+    <Button
+        android:id="@+id/btnCadastroClientes"
+        style="@style/EstiloBotaoDashboard"
+        android:text="Cadastro de Clientes" />
+
+    <Button
+        android:id="@+id/btnProdutos"
+        style="@style/EstiloBotaoDashboard"
+        android:text="Produtos" />
+
+    <Button
+        android:id="@+id/btnPedidos"
+        style="@style/EstiloBotaoDashboard"
+        android:text="Emissão de Pedidos" />
+
+    <Button
+        android:id="@+id/btnRoteirizador"
+        style="@style/EstiloBotaoDashboard"
+        android:text="Roteirizador" />
+
+    <Button
+        android:id="@+id/btnConsultaPedidos"
+        style="@style/EstiloBotaoDashboard"
+        android:text="Pedidos por Cliente" />
+
+    <Button
+        android:id="@+id/btnComissoes"
+        style="@style/EstiloBotaoDashboard"
+        android:text="Metas e Comissões" />
+
+</GridLayout>

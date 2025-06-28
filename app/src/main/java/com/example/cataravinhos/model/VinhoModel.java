@@ -22,7 +22,6 @@ public class VinhoModel {
 
     public VinhoModel() {}
 
-    // Getters e Setters
 
     public String getNome() {
         return nome;

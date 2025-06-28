@@ -10,10 +10,13 @@ import com.example.cataravinhos.model.VinhoModel;
 import com.example.cataravinhos.model.PedidoModel;
 import com.example.cataravinhos.model.ComissaoModel;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class DBOpenHelper extends SQLiteOpenHelper {
 
     private static final String DATABASE_NOME = "banco.db";
-    private static final int DATABASE_VERSAO = 6;
+    private static final int DATABASE_VERSAO = 10 ;
 
     public DBOpenHelper(Context context) {
         super(context, DATABASE_NOME, null, DATABASE_VERSAO);
@@ -21,7 +24,7 @@ public class DBOpenHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        // Criação de todas as tabelas
+        //tabelas
         db.execSQL(CadastroModel.CREATE_TABLE);
         db.execSQL(VinhoModel.CREATE_TABLE);
         db.execSQL(PedidoModel.CREATE_TABLE);
@@ -30,7 +33,7 @@ public class DBOpenHelper extends SQLiteOpenHelper {
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        // Atualizações incrementais por versão
+        // Atualizações versão
         if (oldVersion < 4) {
             try {
                 db.execSQL("ALTER TABLE " + CadastroModel.TABELA_CADASTRO +
@@ -82,4 +85,32 @@ public class DBOpenHelper extends SQLiteOpenHelper {
         }
         return existe;
     }
+
+    public List<String> buscarUsuariosPorPerfil(String perfil) {
+        List<String> lista = new ArrayList<>();
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        Cursor cursor = db.query(
+                CadastroModel.TABELA_CADASTRO,
+                new String[]{CadastroModel.COLUNA_ID, CadastroModel.COLUNA_NOME},
+                CadastroModel.COLUNA_PERFIL + " = ?",
+                new String[]{perfil},
+                null, null,
+                CadastroModel.COLUNA_NOME + " ASC"
+        );
+
+        if (cursor.moveToFirst()) {
+            do {
+                int id = cursor.getInt(cursor.getColumnIndexOrThrow(CadastroModel.COLUNA_ID));
+                String nome = cursor.getString(cursor.getColumnIndexOrThrow(CadastroModel.COLUNA_NOME));
+                lista.add(id + " - " + nome);
+            } while (cursor.moveToNext());
+        }
+
+        cursor.close();
+        db.close();
+
+        return lista;
+    }
+
 }
